@@ -7,14 +7,17 @@ import NotesSection from '@components/NotesSection';
 import { WeatherPageSkeleton } from './WeatherPageSkeleton';
 import { deriveWeatherProperties } from '@api/data-hooks/weather/helpers/deriveWeatherProperties';
 import NoWeatherData from '@components/NoWeatherData';
+import { getUserCityFromSessionStorage } from '@/utils/storage';
 
 export default function WeatherPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const city = searchParams.get('city');
 
   useEffect(() => {
+    const userCity = getUserCityFromSessionStorage();
+
     if (!city) {
-      setSearchParams({ city: 'Texas' }, { replace: true });
+      setSearchParams({ city: userCity ?? 'Texas' }, { replace: true });
     }
   }, [city, setSearchParams]);
 

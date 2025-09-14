@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { ITransformedWeatherRealTimeDetails } from '@api/data-hooks/weather/types';
+import { addUserCityToSessionStorage } from '@/utils/storage';
 
 export function redirectIfNeeded(
   data: ITransformedWeatherRealTimeDetails | undefined,
@@ -7,8 +8,8 @@ export function redirectIfNeeded(
 ) {
   if (!data) return;
 
-  if (!sessionStorage.getItem('geoRedirected')) {
-    sessionStorage.setItem('geoRedirected', 'true');
+  if (!sessionStorage.getItem('userCity')) {
+    addUserCityToSessionStorage(data.name);
     navigate(`/weather?city=${encodeURIComponent(data.name)}`);
   }
 }

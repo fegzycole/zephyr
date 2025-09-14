@@ -1,3 +1,4 @@
+import { removeUserCityFromSessionStorage } from '@utils/storage';
 import { LocationCoords, LocationError } from '../types';
 import { mapGeolocationError } from './errorHelpers';
 
@@ -31,10 +32,11 @@ export function watchPermissionChanges(
     .then((status) => {
       status.onchange = () => {
         if (status.state === 'granted') {
-          sessionStorage.removeItem('geoRedirected');
           requestLocationFn();
+          setError(null);
         }
         if (status.state === 'denied') {
+          removeUserCityFromSessionStorage();
           setError('PERMISSION_DENIED');
         }
       };

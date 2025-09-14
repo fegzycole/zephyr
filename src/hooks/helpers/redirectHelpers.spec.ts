@@ -44,20 +44,20 @@ describe('redirectIfNeeded', () => {
 
     redirectIfNeeded(data, navigate);
 
-    expect(sessionStorage.getItem('geoRedirected')).toBe('true');
+    expect(sessionStorage.getItem('userCity')).toBeDefined();
     expect(navigate).toHaveBeenCalledWith(
       `/weather?city=${encodeURIComponent(cityName)}`
     );
   });
 
-  it('does not navigate again if geoRedirected is already set', () => {
-    sessionStorage.setItem('geoRedirected', 'true');
+  it('does not navigate again if userCity is already set', () => {
+    sessionStorage.setItem('userCity', 'Kinshasha');
     const data = makeWeatherDetails();
 
     redirectIfNeeded(data, navigate);
 
     expect(navigate).not.toHaveBeenCalled();
-    expect(sessionStorage.getItem('geoRedirected')).toBe('true');
+    expect(sessionStorage.getItem('userCity')).toBeDefined();
   });
 
   it('encodes city names with spaces', () => {

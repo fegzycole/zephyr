@@ -30,7 +30,6 @@ export async function fetchWithCache<T extends keyof WeatherEndpointMap>(
     if (axios.isAxiosError(error)) {
       showWeatherErrorToast(error.response?.data?.error?.code);
     } else {
-      console.log({ error });
       showWeatherErrorToast();
     }
 

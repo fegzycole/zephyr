@@ -17,9 +17,13 @@ export function useUserLocation() {
   const addToast = useStore((s) => s.addToast);
   const navigate = useNavigate();
 
+  const userCoordinates = coords
+    ? `${coords.latitude},${coords.longitude}`
+    : '';
+
   const { data } = useGetWeatherRealTime({
     access_key: import.meta.env.VITE_WEATHER_API_KEY,
-    query: coords ? `${coords.latitude},${coords.longitude}` : '',
+    query: userCoordinates,
   });
 
   useEffect(() => {
@@ -29,10 +33,10 @@ export function useUserLocation() {
   }, []);
 
   useEffect(() => {
-    if (coords && data) {
+    if (coords && data && !error) {
       redirectIfNeeded(data, navigate);
     }
-  }, [coords, data, navigate]);
+  }, [coords, data, error, navigate]);
 
   useEffect(() => {
     if (error) {
