@@ -1,0 +1,38 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`NoWeatherData > renders correctly and matches snapshot 1`] = `
+<div>
+  <div
+    class="h-[70%] w-full flex flex-col justify-center items-center"
+  >
+    <svg
+      aria-hidden="true"
+      class="lucide lucide-search size-24 xl:size-48 text-subtle"
+      data-testid="lucide-icon"
+      fill="none"
+      height="24"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="m21 21-4.34-4.34"
+      />
+      <circle
+        cx="11"
+        cy="11"
+        r="8"
+      />
+    </svg>
+    <p
+      class="text-subtle text-lg xl:text-3xl"
+    >
+      No Weather Information Available
+    </p>
+  </div>
+</div>
+`;

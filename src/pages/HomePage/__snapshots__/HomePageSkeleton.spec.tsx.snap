@@ -1,0 +1,32 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`HomePageSkeleton (unit) > matches snapshot 1`] = `
+<div>
+  <div
+    class="min-h-screen bg-gray-100"
+  >
+    <div
+      class="grid grid-cols-1 lg:grid-cols-2 gap-6"
+    >
+      <div
+        data-testid="WeatherCardSkeleton"
+      />
+      <div
+        data-testid="WeatherCardSkeleton"
+      />
+      <div
+        data-testid="WeatherCardSkeleton"
+      />
+      <div
+        data-testid="WeatherCardSkeleton"
+      />
+      <div
+        data-testid="WeatherCardSkeleton"
+      />
+      <div
+        data-testid="WeatherCardSkeleton"
+      />
+    </div>
+  </div>
+</div>
+`;

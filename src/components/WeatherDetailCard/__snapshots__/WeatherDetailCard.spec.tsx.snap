@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`WeatherDetailCard Component (unit/integration) > matches snapshot 1`] = `
+<div
+  class="bg-gray p-5 rounded-3xl flex gap-4 items-start"
+>
+  <img
+    alt="underneath cheetah icon"
+    class="w-6"
+    src="/weather_details/tzEIGb7f.svg"
+  />
+  <div>
+    <h5
+      class="mb-2 text-xl text-detail"
+    >
+      underneath cheetah
+    </h5>
+    <h3
+      class="text-3xl text-foreground font-semibold"
+    >
+      72 %
+    </h3>
+  </div>
+</div>
+`;

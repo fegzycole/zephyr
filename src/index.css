@@ -1,0 +1,16 @@
+@import 'tailwindcss/preflight';
+@import 'tailwindcss/theme';
+@import 'tailwindcss/utilities';
+
+@theme {
+  --font-rubik: 'Rubik', sans-serif;
+  --breakpoint-3xl: 2000px;
+
+  --color-gray: #eaecef;
+  --color-foreground: #202b3b;
+  --color-subtle: #9399a2;
+  --color-primary: #0095ff;
+  --color-light: #f5f5f5;
+  --color-active: #202b3b;
+  --color-detail: #7c8797;
+}

@@ -1,0 +1,59 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Cities component > matches snapshot with multiple cities 1`] = `
+<div
+  class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full"
+>
+  <div
+    data-testid="weather-card-Grantburgh"
+  >
+    <span>
+      Grantburgh
+    </span>
+    <span>
+      ☆
+    </span>
+    <span />
+    <button>
+      toggle-fav
+    </button>
+    <button>
+      remove
+    </button>
+  </div>
+  <div
+    data-testid="weather-card-Lorenzohaven"
+  >
+    <span>
+      Lorenzohaven
+    </span>
+    <span>
+      ☆
+    </span>
+    <span />
+    <button>
+      toggle-fav
+    </button>
+    <button>
+      remove
+    </button>
+  </div>
+  <div
+    data-testid="weather-card-Sammyburgh"
+  >
+    <span>
+      Sammyburgh
+    </span>
+    <span>
+      ☆
+    </span>
+    <span />
+    <button>
+      toggle-fav
+    </button>
+    <button>
+      remove
+    </button>
+  </div>
+</div>
+`;

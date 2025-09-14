@@ -1,0 +1,22 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`NoteActions > matches snapshot 1`] = `
+<div
+  class="absolute bottom-[-45px] right-0 flex gap-2
+                 opacity-100 sm:opacity-0 sm:group-hover:opacity-100
+                 transition-opacity duration-200"
+>
+  <button
+    data-testid="Edit2Icon"
+    type="button"
+  >
+    Edit2Icon
+  </button>
+  <button
+    data-testid="TrashIcon"
+    type="button"
+  >
+    TrashIcon
+  </button>
+</div>
+`;

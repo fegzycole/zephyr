@@ -1,0 +1,38 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`WeatherPage > matches snapshot when loaded with data 1`] = `
+<DocumentFragment>
+  <div
+    class="w-full xl:w-[50%] mx-auto"
+  >
+    <div
+      class="mb-10"
+    >
+      <div
+        data-testid="weather-hero"
+      >
+        SnapshotCity - 25
+      </div>
+      <div
+        class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-5 w-full"
+      >
+        <div
+          data-testid="weather-detail"
+        >
+          Humidity: 42%
+        </div>
+        <div
+          data-testid="weather-detail"
+        >
+          Wind: 10 km/h
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="notes-section"
+    >
+      SnapshotCity
+    </div>
+  </div>
+</DocumentFragment>
+`;

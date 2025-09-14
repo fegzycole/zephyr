@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SearchBar Component (unit) > matches snapshot 1`] = `
+<input
+  class="bg-gray w-full lg:w-[45%] rounded-xl p-3"
+  placeholder="addo titulus"
+  type="text"
+  value="Kuhlmanfield"
+/>
+`;

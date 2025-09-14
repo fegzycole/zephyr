@@ -1,0 +1,37 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`LoadMorePagination > matches snapshot 1`] = `
+<div>
+  <div>
+    Visible: 
+    5
+  </div>
+  <div
+    class="mt-4 flex justify-center"
+  >
+    <button
+      class="group p-2 rounded-full shadow transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed bg-foreground"
+      data-testid="load-more-icon"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-chevron-down w-5 h-5 transition-colors w-6 h-6 text-white"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="m6 9 6 6 6-6"
+        />
+      </svg>
+    </button>
+  </div>
+</div>
+`;

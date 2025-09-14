@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`EditableNote > matches snapshot (default state) 1`] = `
+<div
+  class="relative max-w-full flex justify-end group my-5"
+>
+  <div
+    data-testid="comment-bubble"
+  >
+    <p
+      class="font-lighter text-base text-subtle"
+    >
+      Initial comment
+    </p>
+  </div>
+  <div>
+    <button
+      data-testid="edit"
+    >
+      edit
+    </button>
+    <button
+      data-testid="remove"
+    >
+      remove
+    </button>
+  </div>
+</div>
+`;

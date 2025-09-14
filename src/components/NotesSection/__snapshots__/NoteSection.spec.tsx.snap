@@ -1,0 +1,260 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`NoteSection > matches snapshot when no notes exist 1`] = `
+<div>
+  <div
+    class="relative"
+  >
+    <textarea
+      class="w-full block text-foreground p-3 bg-gray border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-primary resize-y pr-12 pb-12"
+      placeholder=""
+      rows="5"
+    />
+    <div
+      class="absolute bottom-2 right-2 flex gap-3"
+    >
+      <button
+        class="group p-2 rounded-full shadow transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed bg-primary"
+        disabled=""
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-save w-5 h-5 transition-colors cursor-not-allowed text-white"
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"
+          />
+          <path
+            d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"
+          />
+          <path
+            d="M7 3v4a1 1 0 0 0 1 1h7"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`NoteSection > renders notes for the current city and shows count 1`] = `
+<div>
+  <div
+    class="relative"
+  >
+    <textarea
+      class="w-full block text-foreground p-3 bg-gray border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-primary resize-y pr-12 pb-12"
+      placeholder=""
+      rows="5"
+    />
+    <div
+      class="absolute bottom-2 right-2 flex gap-3"
+    >
+      <button
+        class="group p-2 rounded-full shadow transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed bg-primary"
+        disabled=""
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-save w-5 h-5 transition-colors cursor-not-allowed text-white"
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"
+          />
+          <path
+            d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"
+          />
+          <path
+            d="M7 3v4a1 1 0 0 0 1 1h7"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div
+    class="mt-10"
+  >
+    <h4
+      class="text-xl font-semibold text-foreground"
+    >
+      Notes (
+      2
+      )
+    </h4>
+    <div>
+      <div
+        class="relative max-w-full flex justify-end group my-5"
+      >
+        <div
+          class="relative inline-block rounded-2xl bg-gray p-4 shadow-sm min-w-[150px] min-h-[52px] cursor-auto"
+        >
+          <p
+            class="font-lighter text-base text-subtle"
+          >
+            Note 1
+          </p>
+          <div
+            class="absolute right-0 top-1/2 translate-x-full -translate-y-1/2"
+          >
+            <div
+              class="h-0 w-0 border-t-8 border-b-8 border-l-8 border-t-transparent border-b-transparent border-l-gray"
+            />
+          </div>
+        </div>
+        <div
+          class="absolute bottom-[-45px] right-0 flex gap-2
+                 opacity-100 sm:opacity-0 sm:group-hover:opacity-100
+                 transition-opacity duration-200"
+        >
+          <button
+            class="group p-2 rounded-full shadow transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed bg-white hover:bg-light shadow"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="lucide lucide-pen w-5 h-5 transition-colors text-gray-500"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"
+              />
+            </svg>
+          </button>
+          <button
+            class="group p-2 rounded-full shadow transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed bg-white hover:bg-red-50 shadow"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="lucide lucide-trash w-5 h-5 transition-colors text-red-500"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"
+              />
+              <path
+                d="M3 6h18"
+              />
+              <path
+                d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div
+        class="relative max-w-full flex justify-end group my-5"
+      >
+        <div
+          class="relative inline-block rounded-2xl bg-gray p-4 shadow-sm min-w-[150px] min-h-[52px] cursor-auto"
+        >
+          <p
+            class="font-lighter text-base text-subtle"
+          >
+            Note 2
+          </p>
+          <div
+            class="absolute right-0 top-1/2 translate-x-full -translate-y-1/2"
+          >
+            <div
+              class="h-0 w-0 border-t-8 border-b-8 border-l-8 border-t-transparent border-b-transparent border-l-gray"
+            />
+          </div>
+        </div>
+        <div
+          class="absolute bottom-[-45px] right-0 flex gap-2
+                 opacity-100 sm:opacity-0 sm:group-hover:opacity-100
+                 transition-opacity duration-200"
+        >
+          <button
+            class="group p-2 rounded-full shadow transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed bg-white hover:bg-light shadow"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="lucide lucide-pen w-5 h-5 transition-colors text-gray-500"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"
+              />
+            </svg>
+          </button>
+          <button
+            class="group p-2 rounded-full shadow transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed bg-white hover:bg-red-50 shadow"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="lucide lucide-trash w-5 h-5 transition-colors text-red-500"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"
+              />
+              <path
+                d="M3 6h18"
+              />
+              <path
+                d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

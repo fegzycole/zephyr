@@ -1,0 +1,22 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`WeatherDetailCardSkeleton Component (unit/integration) > matches snapshot 1`] = `
+<div
+  class="bg-gray-200 rounded-2xl p-5 flex gap-4"
+>
+  <div
+    class="bg-gray-300 rounded animate-pulse size-6"
+    data-testid="skeleton-icon"
+  />
+  <div>
+    <div
+      class="bg-gray-300 rounded animate-pulse h-6 w-18 mb-2"
+      data-testid="skeleton-label"
+    />
+    <div
+      class="bg-gray-300 rounded animate-pulse h-8 w-36"
+      data-testid="skeleton-value"
+    />
+  </div>
+</div>
+`;

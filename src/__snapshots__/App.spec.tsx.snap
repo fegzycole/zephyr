@@ -1,0 +1,31 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<App /> > matches wrapper snapshot (regression for layout/classes) 1`] = `
+<div
+  class="3xl:w-[50%] h-full 3xl:mx-auto bg-light font-rubik"
+>
+  <div
+    class="flex min-h-screen p-5 relative"
+  >
+    <div
+      data-testid="navbar"
+    >
+      Navbar
+    </div>
+    <div
+      data-testid="toast-container"
+    >
+      Toast
+    </div>
+    <div
+      class="flex-1 md:ml-5 pb-30 md:pb-0"
+    >
+      <div
+        data-testid="home-page"
+      >
+        HomePage
+      </div>
+    </div>
+  </div>
+</div>
+`;

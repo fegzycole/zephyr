@@ -1,0 +1,55 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`NoteBox > matches snapshot (empty value) 1`] = `
+<DocumentFragment>
+  <div
+    class="relative"
+  >
+    <textarea
+      class="pr-12 pb-12"
+      data-testid="textarea"
+      rows="3"
+    />
+    <div
+      class="absolute bottom-2 right-2 flex gap-3"
+    >
+      <button
+        data-testid="save-button"
+        disabled=""
+      >
+        save-button
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`NoteBox > matches snapshot (non-empty value) 1`] = `
+<DocumentFragment>
+  <div
+    class="relative"
+  >
+    <textarea
+      class="pr-12 pb-12"
+      data-testid="textarea"
+      rows="3"
+    >
+      Hello
+    </textarea>
+    <div
+      class="absolute bottom-2 right-2 flex gap-3"
+    >
+      <button
+        data-testid="cancel-button"
+      >
+        cancel-button
+      </button>
+      <button
+        data-testid="save-button"
+      >
+        save-button
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

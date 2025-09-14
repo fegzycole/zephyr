@@ -1,0 +1,76 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`WeatherPageSkeleton > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="w-full xl:w-[50%] mx-auto"
+  >
+    <div
+      class="mb-10"
+    >
+      <div
+        data-testid="weather-hero-skeleton"
+      />
+    </div>
+    <div
+      class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-5 w-full"
+    >
+      <div
+        data-testid="weather-detail-card-skeleton"
+      />
+      <div
+        data-testid="weather-detail-card-skeleton"
+      />
+      <div
+        data-testid="weather-detail-card-skeleton"
+      />
+      <div
+        data-testid="weather-detail-card-skeleton"
+      />
+      <div
+        data-testid="weather-detail-card-skeleton"
+      />
+      <div
+        data-testid="weather-detail-card-skeleton"
+      />
+    </div>
+    <div
+      class="mt-5"
+    >
+      <div
+        class="rounded-2xl justify-between w-full"
+        data-testid="comment-section-skeleton"
+      >
+        <div
+          class="bg-gray-300 rounded animate-pulse w-full h-36"
+          data-testid="skeleton"
+        />
+        <div
+          class="mt-5"
+        >
+          <div
+            class="bg-gray-300 rounded animate-pulse w-40 h-8"
+            data-testid="skeleton"
+          />
+        </div>
+        <div
+          class="flex flex-col gap-3 items-end mt-5"
+        >
+          <div
+            class="bg-gray-300 rounded animate-pulse h-14 w-48"
+            data-testid="skeleton"
+          />
+          <div
+            class="bg-gray-300 rounded animate-pulse h-14 w-48"
+            data-testid="skeleton"
+          />
+          <div
+            class="bg-gray-300 rounded animate-pulse h-14 w-48"
+            data-testid="skeleton"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
