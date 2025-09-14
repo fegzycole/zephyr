@@ -1,5 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
+
 import { transformWeatherRealTimeResponse } from './transformers';
+
 import type { IGetWeatherRealTimeResponse } from '../types';
 
 vi.mock('./dateUtils', () => ({
@@ -11,10 +13,6 @@ vi.mock('./weatherIconMap', () => ({
 }));
 
 describe('transformWeatherRealTimeResponse', () => {
-  beforeEach(() => {
-    // Test setup
-  });
-
   it('transforms IGetWeatherRealTimeResponse into ITransformedWeatherRealTimeDetails', () => {
     const mockResponse: IGetWeatherRealTimeResponse = {
       location: {

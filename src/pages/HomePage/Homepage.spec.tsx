@@ -1,11 +1,12 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import React from 'react';
 import '@testing-library/jest-dom';
+
 import { useGetWeatherRealTimeMultiple } from '@api/data-hooks/weather';
 import { useStore } from '@store';
-import { ITransformedWeatherRealTimeDetails } from '@api/data-hooks/weather/types';
 import HomePage from './HomePage';
+
+import type { ITransformedWeatherRealTimeDetails } from '@api/data-hooks/weather/types';
 
 vi.mock('@api/data-hooks/weather', () => ({
   useGetWeatherRealTimeMultiple: vi.fn(),

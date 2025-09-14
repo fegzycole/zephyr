@@ -1,7 +1,8 @@
-import { beforeEach, afterEach, describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
-import NoteSection from './NoteSection';
+
 import { useStore } from '@store/store';
+import NoteSection from './NoteSection';
 
 type NoteItem = { id: string; content: string };
 type MinimalStore = {

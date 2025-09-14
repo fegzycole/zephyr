@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest';
+
 import { buildCacheKey } from './buildCacheKey';
-import { WeatherEndpointMap } from '../types';
+
+import type { WeatherEndpointMap } from '../types';
 
 describe('buildCacheKey', () => {
   it('should generate a consistent cache key for given endpoint and params', () => {

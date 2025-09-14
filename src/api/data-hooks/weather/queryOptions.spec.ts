@@ -1,10 +1,12 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import axios from 'axios';
 import { QueryClient, type QueryFunctionContext } from '@tanstack/react-query';
+import axios from 'axios';
+
 import { getWeatherRealTimeOptions } from './queryOptions';
 import { weatherKeys } from './queryKeys';
-import type { WeatherEndpointMap, IGetWeatherRealTimeParams } from './types';
 import * as storage from '@utils/storage';
+
+import type { WeatherEndpointMap, IGetWeatherRealTimeParams } from './types';
 
 const addToast = vi.fn();
 vi.mock('@store', () => ({

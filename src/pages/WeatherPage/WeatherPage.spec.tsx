@@ -1,12 +1,14 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
-import WeatherPage from './WeatherPage';
+
 import { useGetWeatherRealTime } from '@api/data-hooks/weather';
 import { deriveWeatherProperties } from '@api/data-hooks/weather/helpers/deriveWeatherProperties';
-import { ITransformedWeatherRealTimeDetails } from '@/api/data-hooks/weather/types';
-import { IWeatherDetailCard } from '@/components/WeatherDetailCard/WeatherDetailCard';
-import { INoteSection } from '@/components/NotesSection/NoteSection';
+import WeatherPage from './WeatherPage';
+
+import type { ITransformedWeatherRealTimeDetails } from '@/api/data-hooks/weather/types';
+import type { IWeatherDetailCard } from '@/components/WeatherDetailCard/WeatherDetailCard';
+import type { INoteSection } from '@/components/NotesSection/NoteSection';
 
 const mockedUseGetWeatherRealTime = vi.mocked(useGetWeatherRealTime, true);
 const mockedDeriveWeatherProperties = vi.mocked(deriveWeatherProperties, true);

@@ -1,14 +1,15 @@
-import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { renderHook } from '@testing-library/react';
-import { useUserLocation } from './useUserLocation';
+
 import { useGetWeatherRealTime } from '@api/data-hooks/weather';
+import { useStore } from '../store';
+import { useUserLocation } from './useUserLocation';
 import { showErrorToast } from './helpers/errorHelpers';
 import {
   requestLocation,
   watchPermissionChanges,
 } from './helpers/locationHelpers';
 import { redirectIfNeeded } from './helpers/redirectHelpers';
-import { useStore } from '../store';
 
 vi.mock('@api/data-hooks/weather', () => ({
   useGetWeatherRealTime: vi.fn(),

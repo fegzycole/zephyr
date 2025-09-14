@@ -1,7 +1,8 @@
-import { describe, vi, beforeEach, it, expect } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import WeatherHero from './WeatherHero';
+
 import { useStore } from '@store';
+import WeatherHero from './WeatherHero';
 
 describe('WeatherHero', () => {
   let addFavorite: ReturnType<typeof vi.fn>;

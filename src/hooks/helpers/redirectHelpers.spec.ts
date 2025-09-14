@@ -1,6 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+
 import { redirectIfNeeded } from './redirectHelpers';
-import { ITransformedWeatherRealTimeDetails } from '@api/data-hooks/weather/types';
+
+import type { ITransformedWeatherRealTimeDetails } from '@api/data-hooks/weather/types';
 
 function makeWeatherDetails(
   overrides?: Partial<ITransformedWeatherRealTimeDetails>

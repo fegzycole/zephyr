@@ -1,16 +1,16 @@
 import { describe, it, expect, beforeEach } from 'vitest';
+
 import { deriveWeatherProperties } from './deriveWeatherProperties';
 import {
   mapDetailsToText,
   mapDetailsToSuffix,
   mapDetailsToIcon,
 } from './weatherDetailsMap';
+
 import type { ITransformedWeatherRealTimeDetails } from '../types';
 
 describe('deriveWeatherProperties', () => {
-  beforeEach(() => {
-    // Test setup
-  });
+  beforeEach(() => {});
 
   it('maps all details with correct label, value, and icon', () => {
     const mockData: ITransformedWeatherRealTimeDetails = {

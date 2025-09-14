@@ -9,9 +9,7 @@ function parseQuery(query: string) {
 }
 
 describe('buildQueryParams', () => {
-  beforeEach(() => {
-    // Test setup
-  });
+  beforeEach(() => {});
 
   it('should handle array values correctly', () => {
     const accessKey = 'testkey1';
