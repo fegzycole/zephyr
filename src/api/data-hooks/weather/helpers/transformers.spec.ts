@@ -1,5 +1,4 @@
 import { describe, it, expect, vi } from 'vitest';
-import { faker } from '@faker-js/faker';
 import { transformWeatherRealTimeResponse } from './transformers';
 import type { IGetWeatherRealTimeResponse } from '../types';
 
@@ -12,25 +11,29 @@ vi.mock('./weatherIconMap', () => ({
 }));
 
 describe('transformWeatherRealTimeResponse', () => {
+  beforeEach(() => {
+    // Test setup
+  });
+
   it('transforms IGetWeatherRealTimeResponse into ITransformedWeatherRealTimeDetails', () => {
     const mockResponse: IGetWeatherRealTimeResponse = {
       location: {
-        name: faker.location.city(),
+        name: 'San Diego',
         localtime: '2025-09-09 15:45',
-        region: faker.location.city(),
+        region: 'California',
       },
       current: {
-        temperature: faker.number.int({ min: -10, max: 40 }),
-        feelslike: faker.number.int({ min: -15, max: 45 }),
-        uv_index: faker.number.int({ min: 0, max: 11 }),
-        humidity: faker.number.int({ min: 0, max: 100 }),
-        wind_speed: faker.number.int({ min: 0, max: 150 }),
-        pressure: faker.number.int({ min: 950, max: 1050 }),
-        visibility: faker.number.int({ min: 0, max: 20 }),
-        weather_descriptions: [faker.word.words(2)],
-        weather_code: faker.number.int({ min: 1000, max: 2000 }),
-        weather_icons: [faker.image.url()],
-        observation_time: faker.date.recent().toISOString(),
+        temperature: 28,
+        feelslike: 32,
+        uv_index: 7,
+        humidity: 55,
+        wind_speed: 18,
+        pressure: 1015,
+        visibility: 12,
+        weather_descriptions: ['Partly Cloudy'],
+        weather_code: 1500,
+        weather_icons: ['https://test.example.com/weather-icon.png'],
+        observation_time: new Date('2023-01-01T15:45:00Z').toISOString(),
         astro: {
           sunrise: '06:12 AM',
           sunset: '07:45 PM',

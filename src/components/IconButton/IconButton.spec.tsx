@@ -1,5 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, beforeEach, expect, vi } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { SVGProps } from 'react';
 import IconButton from './IconButton';
 

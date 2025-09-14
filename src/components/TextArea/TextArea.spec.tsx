@@ -1,6 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, beforeEach, expect, vi } from 'vitest';
-import { faker } from '@faker-js/faker';
+import { render, screen, fireEvent } from '@testing-library/react';
 import TextArea from './TextArea';
 
 describe('TextArea Component (unit/integration)', () => {
@@ -12,12 +11,12 @@ describe('TextArea Component (unit/integration)', () => {
   let handleChange: ReturnType<typeof vi.fn>;
 
   beforeEach(() => {
-    faker.seed(101);
-    value = faker.lorem.sentence();
-    placeholder = faker.lorem.words(3);
-    customClass = faker.word.sample();
-    id = faker.string.uuid();
-    rows = faker.number.int({ min: 2, max: 12 });
+    vi.clearAllMocks();
+    value = 'Test message content';
+    placeholder = 'test placeholder text';
+    customClass = 'custom-class';
+    id = '12345678-abcd-efgh-ijkl-123456789012';
+    rows = 6;
     handleChange = vi.fn();
   });
 

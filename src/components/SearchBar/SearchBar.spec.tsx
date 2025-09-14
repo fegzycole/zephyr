@@ -1,6 +1,5 @@
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, beforeEach, expect, vi } from 'vitest';
-import { faker } from '@faker-js/faker';
 import SearchBar from './SearchBar';
 
 describe('SearchBar Component (unit)', () => {
@@ -10,10 +9,10 @@ describe('SearchBar Component (unit)', () => {
   let onChange: ReturnType<typeof vi.fn>;
 
   beforeEach(() => {
-    faker.seed(99);
-    value = faker.location.city();
-    placeholder = faker.lorem.words(2);
-    customClass = faker.word.sample();
+    vi.clearAllMocks();
+    value = 'Orlando';
+    placeholder = 'search placeholder';
+    customClass = 'custom-search';
     onChange = vi.fn();
   });
 

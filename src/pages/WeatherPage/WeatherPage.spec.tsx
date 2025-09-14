@@ -1,7 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
-import { faker } from '@faker-js/faker';
 import WeatherPage from './WeatherPage';
 import { useGetWeatherRealTime } from '@api/data-hooks/weather';
 import { deriveWeatherProperties } from '@api/data-hooks/weather/helpers/deriveWeatherProperties';
@@ -50,7 +49,7 @@ vi.mock('./WeatherPageSkeleton', () => ({
   WeatherPageSkeleton: () => <div data-testid="skeleton">Loading...</div>,
 }));
 
-const renderWithRouter = (initialRoute = '/?city=' + faker.location.city()) => {
+const renderWithRouter = (initialRoute = '/?city=New York') => {
   return render(
     <MemoryRouter initialEntries={[initialRoute]}>
       <Routes>
@@ -122,9 +121,9 @@ describe('WeatherPage', () => {
   });
 
   it('renders hero, details, and comments when data is available', () => {
-    const mockCity = faker.location.city();
-    const mockTemp = faker.number.int({ min: -10, max: 40 });
-    const mockIcon = faker.image.url();
+    const mockCity = 'Los Angeles';
+    const mockTemp = 25;
+    const mockIcon = 'https://test.example.com/weather-icon.png';
 
     mockedDeriveWeatherProperties.mockReturnValue([
       { label: 'Humidity', value: '42%', icon: 'icon-eye.svg' },
@@ -138,14 +137,14 @@ describe('WeatherPage', () => {
         region: mockCity,
         temperature: mockTemp.toString(),
         icon: mockIcon,
-        uvIndex: faker.number.int({ min: 0, max: 11 }),
-        wind: faker.number.int({ min: 0, max: 100 }),
-        humidity: faker.number.int({ min: 10, max: 100 }),
-        visibility: faker.number.int({ min: 1, max: 20 }),
-        feelsLike: faker.number.float({ min: -15, max: 45 }),
-        pressure: faker.number.int({ min: 950, max: 1050 }),
-        sunset: faker.date.soon().toISOString(),
-        time: faker.date.anytime().toDateString(),
+        uvIndex: 6,
+        wind: 15,
+        humidity: 65,
+        visibility: 10,
+        feelsLike: 28.5,
+        pressure: 1013,
+        sunset: new Date('2023-01-02T18:00:00Z').toISOString(),
+        time: new Date('2023-01-01T12:00:00Z').toDateString(),
       },
     });
 

@@ -5,10 +5,10 @@ exports[`Cities component > matches snapshot with multiple cities 1`] = `
   class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full"
 >
   <div
-    data-testid="weather-card-Grantburgh"
+    data-testid="weather-card-TestCity1"
   >
     <span>
-      Grantburgh
+      TestCity1
     </span>
     <span>
       ☆
@@ -22,10 +22,10 @@ exports[`Cities component > matches snapshot with multiple cities 1`] = `
     </button>
   </div>
   <div
-    data-testid="weather-card-Lorenzohaven"
+    data-testid="weather-card-TestCity2"
   >
     <span>
-      Lorenzohaven
+      TestCity2
     </span>
     <span>
       ☆
@@ -39,10 +39,10 @@ exports[`Cities component > matches snapshot with multiple cities 1`] = `
     </button>
   </div>
   <div
-    data-testid="weather-card-Sammyburgh"
+    data-testid="weather-card-TestCity3"
   >
     <span>
-      Sammyburgh
+      TestCity3
     </span>
     <span>
       ☆

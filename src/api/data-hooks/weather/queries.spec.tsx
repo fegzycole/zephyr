@@ -45,7 +45,7 @@ function wrapper({ children }: { children: React.ReactNode }) {
 }
 
 afterEach(() => {
-  vi.restoreAllMocks();
+  vi.clearAllMocks();
 });
 
 describe('useGetWeatherRealTime', () => {

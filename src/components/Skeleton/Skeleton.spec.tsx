@@ -1,6 +1,5 @@
-import { render, screen } from '@testing-library/react';
 import { describe, it, beforeEach, expect } from 'vitest';
-import { faker } from '@faker-js/faker';
+import { render, screen } from '@testing-library/react';
 import Skeleton from './Skeleton';
 
 describe('Skeleton Component (unit)', () => {
@@ -8,9 +7,8 @@ describe('Skeleton Component (unit)', () => {
   let testId: string;
 
   beforeEach(() => {
-    faker.seed(123);
-    customClass = faker.word.sample();
-    testId = faker.string.alphanumeric(10);
+    customClass = 'custom-skeleton';
+    testId = 'test-skeleton';
   });
 
   it('renders with default classes', () => {

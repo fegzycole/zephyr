@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { buildCacheKey } from './buildCacheKey';
 import { WeatherEndpointMap } from '../types';
-import { faker } from '@faker-js/faker';
 
 describe('buildCacheKey', () => {
   it('should generate a consistent cache key for given endpoint and params', () => {
@@ -10,7 +9,7 @@ describe('buildCacheKey', () => {
     const endpoint: Endpoint = 'current';
     const params: WeatherEndpointMap[typeof endpoint]['params'] = {
       query: 'Lagos',
-      access_key: faker.string.uuid(),
+      access_key: 'cache-key-uuid-test',
     };
 
     const key = buildCacheKey(endpoint, params);

@@ -2,14 +2,7 @@
 
 exports[`Skeleton Component (unit) > matches snapshot 1`] = `
 <div
-  class="bg-gray-300 rounded animate-pulse westernise"
-  data-testid="GtolJr3oJb"
-/>
-`;
-
-exports[`Skeleton Component (unit) > matches snapshot for regression safety 1`] = `
-<div
-  class="bg-gray-300 rounded animate-pulse westernise"
-  data-testid="GtolJr3oJb"
+  class="bg-gray-300 rounded animate-pulse custom-skeleton"
+  data-testid="test-skeleton"
 />
 `;

@@ -1,27 +1,5 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`HomePage (unit) > matches snapshot 1`] = `
-<div>
-  <div>
-    <div
-      class="mb-8"
-    >
-      <input
-        data-testid="SearchBar"
-        value=""
-      />
-    </div>
-    <div>
-      <div
-        data-testid="Cities"
-      >
-        Cities:
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`HomePage > matches snapshot 1`] = `
 <DocumentFragment>
   <div>
@@ -44,28 +22,4 @@ exports[`HomePage > matches snapshot 1`] = `
     </div>
   </div>
 </DocumentFragment>
-`;
-
-exports[`HomePage > matches snapshot with fake data 1`] = `
-<div>
-  <div>
-    <div
-      class="mb-8"
-    >
-      <input
-        data-testid="search-bar"
-        value=""
-      />
-    </div>
-    <div
-      data-testid="pagination"
-    >
-      <div
-        data-testid="cities"
-      >
-        [{"name":"Paris","time":"2025-09-09T00:49:11.725Z","temperature":"-7","icon":"https://picsum.photos/seed/iKprzM/3328/1004","uvIndex":7,"wind":0,"humidity":24,"visibility":3,"feelsLike":9,"pressure":1015,"sunset":"2025-09-10T10:12:59.659Z"},{"name":"Rome","time":"2025-09-08T23:03:37.103Z","temperature":"32","icon":"https://loremflickr.com/1907/2761?lock=8766120070207009","uvIndex":4,"wind":38,"humidity":55,"visibility":6,"feelsLike":35,"pressure":1030,"sunset":"2025-09-10T02:05:29.013Z"}]
-      </div>
-    </div>
-  </div>
-</div>
 `;

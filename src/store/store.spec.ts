@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { useStore } from './store';
-import { faker } from '@faker-js/faker';
 
 beforeEach(() => {
+  vi.clearAllMocks();
   vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {});
   vi.spyOn(Storage.prototype, 'getItem').mockReturnValue(null);
   vi.spyOn(Storage.prototype, 'removeItem').mockImplementation(() => {});
@@ -20,7 +20,7 @@ describe('useStore (root store)', () => {
   });
 
   it('can add and remove favorites', () => {
-    const city = faker.location.city();
+    const city = 'Paris';
     const store = useStore.getState();
 
     store.addFavorite(city);
@@ -31,9 +31,9 @@ describe('useStore (root store)', () => {
   });
 
   it('can add, update, and remove notes', () => {
-    const city = faker.location.city();
-    const content = faker.lorem.sentence();
-    const newContent = faker.lorem.sentence();
+    const city = 'London';
+    const content = 'Original note content';
+    const newContent = 'Updated note content';
 
     const store = useStore.getState();
 
@@ -57,7 +57,7 @@ describe('useStore (root store)', () => {
   });
 
   it('can add and remove toasts', () => {
-    const message = faker.lorem.words(3);
+    const message = 'test toast message';
     const store = useStore.getState();
 
     store.addToast(message, 'info');
@@ -71,12 +71,12 @@ describe('useStore (root store)', () => {
   });
 
   it('supports cross-slice operations', () => {
-    const city = faker.location.city();
+    const city = 'Berlin';
     const store = useStore.getState();
 
     store.addFavorite(city);
 
-    const content = faker.lorem.sentence();
+    const content = 'Cross-slice test note';
     store.addNote(city, content);
 
     store.addToast(`Added ${city} successfully`, 'info');

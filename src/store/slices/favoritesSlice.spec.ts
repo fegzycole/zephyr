@@ -1,6 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { create } from 'zustand';
-import { faker } from '@faker-js/faker';
 import { createFavoritesSlice } from './favoritesSlice';
 import { FavoritesSlice } from '../types';
 import { FAVORITES_KEY } from '../keys';
@@ -34,12 +33,7 @@ describe('createFavoritesSlice', () => {
   });
 
   it('loads favorites from cache', async () => {
-    const cachedFavorites = faker.helpers.multiple(
-      () => faker.location.city(),
-      {
-        count: 4,
-      }
-    );
+    const cachedFavorites = ['Paris', 'London', 'Tokyo', 'New York'];
 
     mockedGetCache.mockResolvedValue(cachedFavorites);
 
@@ -59,9 +53,9 @@ describe('createFavoritesSlice', () => {
   });
 
   it('adds a new favorite and updates cache', async () => {
-    const newCity = faker.location.city();
+    const newCity = 'Barcelona';
 
-    await store.getState().addFavorite(newCity);
+    store.getState().addFavorite(newCity);
 
     expect(store.getState().favorites).toContain(newCity);
     expect(mockedSetCache).toHaveBeenCalledWith(
@@ -71,21 +65,21 @@ describe('createFavoritesSlice', () => {
   });
 
   it('does not add duplicate favorites', async () => {
-    const city = faker.location.city();
+    const city = 'Milan';
     store.setState({ favorites: [city] });
 
-    await store.getState().addFavorite(city);
+    store.getState().addFavorite(city);
 
     expect(store.getState().favorites).toEqual([city]);
     expect(mockedSetCache).toHaveBeenCalledWith(FAVORITES_KEY, [city]);
   });
 
   it('removes a favorite and updates cache', async () => {
-    const city1 = faker.location.city();
-    const city2 = faker.location.city();
+    const city1 = 'Rome';
+    const city2 = 'Berlin';
     store.setState({ favorites: [city1, city2] });
 
-    await store.getState().removeFavorite(city1);
+    store.getState().removeFavorite(city1);
 
     expect(store.getState().favorites).toEqual([city2]);
     expect(mockedSetCache).toHaveBeenCalledWith(FAVORITES_KEY, [city2]);

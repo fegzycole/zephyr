@@ -1,6 +1,6 @@
+import { describe, expect, it } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import LoadMorePagination from './LoadMorePagination';
-import { describe, expect, it } from 'vitest';
 
 describe('LoadMorePagination', () => {
   it('renders children with initialCount', () => {

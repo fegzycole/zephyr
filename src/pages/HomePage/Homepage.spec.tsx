@@ -1,12 +1,10 @@
-import React from 'react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { faker } from '@faker-js/faker';
+import React from 'react';
+import '@testing-library/jest-dom';
 import { useGetWeatherRealTimeMultiple } from '@api/data-hooks/weather';
 import { useStore } from '@store';
 import { ITransformedWeatherRealTimeDetails } from '@api/data-hooks/weather/types';
-import '@testing-library/jest-dom';
-
 import HomePage from './HomePage';
 
 vi.mock('@api/data-hooks/weather', () => ({
@@ -54,22 +52,22 @@ function makeWeather(city: string): ITransformedWeatherRealTimeDetails {
   return {
     name: city,
     region: city,
-    time: faker.date.recent().toISOString(),
-    temperature: faker.number.int({ min: -10, max: 40 }).toString(),
-    icon: faker.image.url(),
-    uvIndex: faker.number.int({ min: 0, max: 11 }),
-    wind: faker.number.int({ min: 0, max: 30 }),
-    humidity: faker.number.int({ min: 20, max: 100 }),
-    visibility: faker.number.int({ min: 1, max: 10 }),
-    feelsLike: faker.number.int({ min: -10, max: 40 }),
-    pressure: faker.number.int({ min: 950, max: 1050 }),
-    sunset: faker.date.soon().toISOString(),
+    time: new Date('2023-01-01T10:00:00Z').toISOString(),
+    temperature: '22',
+    icon: 'https://test.example.com/weather-icon.png',
+    uvIndex: 5,
+    wind: 12,
+    humidity: 60,
+    visibility: 8,
+    feelsLike: 25,
+    pressure: 1013,
+    sunset: new Date('2023-01-02T18:00:00Z').toISOString(),
   };
 }
 
 describe('HomePage', () => {
   beforeEach(() => {
-    vi.resetAllMocks();
+    vi.clearAllMocks();
   });
 
   it('renders the search bar', () => {

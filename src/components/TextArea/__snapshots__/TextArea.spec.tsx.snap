@@ -2,22 +2,11 @@
 
 exports[`TextArea Component (unit/integration) > matches snapshot 1`] = `
 <textarea
-  class="w-full block text-foreground p-3 bg-gray border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-primary resize-y next"
-  id="b4a8022f-89b8-4ec6-a5f5-dd8e11be24a2"
-  placeholder="supplanto auditor iste"
-  rows="7"
+  class="w-full block text-foreground p-3 bg-gray border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-primary resize-y custom-class"
+  id="12345678-abcd-efgh-ijkl-123456789012"
+  placeholder="test placeholder text"
+  rows="6"
 >
-  Molestias ad astrum stillicidium trucido cohibeo varietas.
-</textarea>
-`;
-
-exports[`TextArea Component (unit/integration) > matches snapshot for regression safety 1`] = `
-<textarea
-  class="w-full block text-foreground p-3 bg-gray border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-primary resize-y next"
-  id="b4a8022f-89b8-4ec6-a5f5-dd8e11be24a2"
-  placeholder="supplanto auditor iste"
-  rows="7"
->
-  Molestias ad astrum stillicidium trucido cohibeo varietas.
+  Test message content
 </textarea>
 `;

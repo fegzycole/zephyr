@@ -1,6 +1,5 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { buildQueryParams } from './buildQueryParams';
-import { faker } from '@faker-js/faker';
 
 function parseQuery(query: string) {
   const params = new URLSearchParams(query);
@@ -10,9 +9,13 @@ function parseQuery(query: string) {
 }
 
 describe('buildQueryParams', () => {
+  beforeEach(() => {
+    // Test setup
+  });
+
   it('should handle array values correctly', () => {
-    const accessKey = faker.string.alphanumeric(8);
-    const cities = [faker.location.city(), faker.location.city()];
+    const accessKey = 'testkey1';
+    const cities = ['Boston', 'Miami'];
     const params = {
       access_key: accessKey,
       query: cities.join(',') as unknown as string,
@@ -26,8 +29,8 @@ describe('buildQueryParams', () => {
   });
 
   it('should work with random large inputs', () => {
-    const accessKey = faker.string.alphanumeric(20);
-    const query = faker.lorem.words(5);
+    const accessKey = 'verylongaccesskeyfortest';
+    const query = 'test query with multiple words';
 
     const params = {
       access_key: accessKey,

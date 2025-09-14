@@ -1,6 +1,6 @@
+import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { NoteSectionSkeleton } from './NoteSectionSkeleton';
-import { describe, it, expect } from 'vitest';
 
 describe('NoteSectionSkeleton', () => {
   it('renders the wrapper', () => {

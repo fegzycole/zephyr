@@ -1,6 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { create } from 'zustand';
-import { faker } from '@faker-js/faker';
 import { createToastSlice } from './toastSlice';
 import { ToastSlice } from '../types';
 
@@ -21,7 +20,7 @@ describe('createToastSlice', () => {
 
   afterEach(() => {
     vi.useRealTimers();
-    vi.restoreAllMocks();
+    vi.clearAllMocks();
   });
 
   it('has default state', () => {
@@ -29,7 +28,7 @@ describe('createToastSlice', () => {
   });
 
   it('adds a toast with default type "info"', () => {
-    const message = faker.lorem.sentence();
+    const message = 'Test notification message';
 
     store.getState().addToast(message);
 
@@ -40,7 +39,7 @@ describe('createToastSlice', () => {
   });
 
   it('adds a toast with explicit type', () => {
-    const message = faker.lorem.sentence();
+    const message = 'Error notification message';
     const type = 'error';
 
     store.getState().addToast(message, type);
@@ -52,7 +51,7 @@ describe('createToastSlice', () => {
   });
 
   it('removes a toast by id', () => {
-    const message = faker.lorem.words(3);
+    const message = 'test remove message';
     store.getState().addToast(message);
 
     const [toast] = store.getState().toasts;
@@ -62,7 +61,7 @@ describe('createToastSlice', () => {
   });
 
   it('automatically removes a toast after 3 seconds', () => {
-    const message = faker.lorem.words(2);
+    const message = 'timeout test';
     store.getState().addToast(message);
 
     expect(store.getState().toasts).toHaveLength(1);
@@ -73,8 +72,8 @@ describe('createToastSlice', () => {
   });
 
   it('only removes the correct toast after timeout', () => {
-    const msg1 = faker.lorem.word();
-    const msg2 = faker.lorem.word();
+    const msg1 = 'message1';
+    const msg2 = 'message2';
 
     store.getState().addToast(msg1);
     store.getState().addToast(msg2);
@@ -87,8 +86,8 @@ describe('createToastSlice', () => {
   });
 
   it('creates unique ids for each toast', () => {
-    const msg1 = faker.lorem.sentence();
-    const msg2 = faker.lorem.sentence();
+    const msg1 = 'First unique message';
+    const msg2 = 'Second unique message';
 
     let counter = 1000;
     vi.spyOn(Date, 'now').mockImplementation(() => counter++);

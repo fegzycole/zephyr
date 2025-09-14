@@ -1,6 +1,6 @@
+import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import NoteBubble from './NoteBubble';
-import { describe, it, expect } from 'vitest';
 
 describe('NoteBubble', () => {
   it('renders children correctly', () => {

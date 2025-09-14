@@ -1,6 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { create } from 'zustand';
-import { faker } from '@faker-js/faker';
 import { createCitiesSlice } from './citiesSlice';
 import { CitiesSlice } from '../types';
 import { CITIES_KEY } from '../keys';
@@ -34,9 +33,7 @@ describe('createCitiesSlice', () => {
   });
 
   it('loads cities from cache', async () => {
-    const cachedCities = faker.helpers.multiple(() => faker.location.city(), {
-      count: 5,
-    });
+    const cachedCities = ['Madrid', 'Amsterdam', 'Vienna', 'Stockholm', 'Copenhagen'];
 
     mockedGetCache.mockResolvedValue(cachedCities);
 
@@ -56,8 +53,8 @@ describe('createCitiesSlice', () => {
   });
 
   it('removes a city and updates cache', async () => {
-    const city1 = faker.location.city();
-    const city2 = faker.location.city();
+    const city1 = 'Dublin';
+    const city2 = 'Prague';
     store.setState({ cities: [city1, city2] });
 
     await store.getState().removeCity(city1);

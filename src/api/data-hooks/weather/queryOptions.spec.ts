@@ -5,7 +5,6 @@ import { getWeatherRealTimeOptions } from './queryOptions';
 import { weatherKeys } from './queryKeys';
 import type { WeatherEndpointMap, IGetWeatherRealTimeParams } from './types';
 import * as storage from '@utils/storage';
-import { faker } from '@faker-js/faker';
 
 const addToast = vi.fn();
 vi.mock('@store', () => ({
@@ -16,23 +15,23 @@ vi.mock('@store', () => ({
 
 describe('getWeatherRealTimeOptions', () => {
   const params: IGetWeatherRealTimeParams = {
-    access_key: faker.string.uuid(),
-    query: faker.location.city(),
+    access_key: '12345678-abcd-efgh-ijkl-123456789012',
+    query: 'San Francisco',
   };
 
   const mockResponse: WeatherEndpointMap['current']['response'] = {
     current: {
-      temperature: faker.number.int({ min: -10, max: 40 }),
-      feelslike: faker.number.int({ min: -10, max: 40 }),
-      uv_index: faker.number.int({ min: 0, max: 11 }),
-      humidity: faker.number.int({ min: 0, max: 100 }),
-      wind_speed: faker.number.int({ min: 0, max: 100 }),
-      pressure: faker.number.int({ min: 900, max: 1100 }),
-      visibility: faker.number.int({ min: 0, max: 10 }),
+      temperature: 22,
+      feelslike: 25,
+      uv_index: 6,
+      humidity: 65,
+      wind_speed: 12,
+      pressure: 1013,
+      visibility: 8,
       weather_descriptions: ['Sunny'],
-      weather_code: faker.number.int({ min: 100, max: 999 }),
-      weather_icons: [faker.image.url()],
-      observation_time: `${faker.number.int({ min: 0, max: 23 })}:${faker.number.int({ min: 0, max: 59 })} PM`,
+      weather_code: 200,
+      weather_icons: ['https://test.example.com/weather-icon.png'],
+      observation_time: '14:30 PM',
       astro: {
         sunrise: '6:00 AM',
         sunset: '6:00 PM',
@@ -43,9 +42,9 @@ describe('getWeatherRealTimeOptions', () => {
       },
     },
     location: {
-      name: faker.location.city(),
-      localtime: faker.date.recent().toISOString(),
-      region: faker.location.state(),
+      name: 'Test City',
+      localtime: new Date('2023-01-01T14:30:00Z').toISOString(),
+      region: 'Test Region',
     },
   };
 

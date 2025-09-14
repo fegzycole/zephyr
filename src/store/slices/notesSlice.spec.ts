@@ -1,6 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { create } from 'zustand';
-import { faker } from '@faker-js/faker';
 import { createNotesSlice } from './notesSlice';
 import { NotesSlice, Note, NotesByCity } from '../types';
 import { NOTES_KEY } from '../keys';
@@ -30,7 +29,7 @@ describe('createNotesSlice', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     store = setupStore();
-    mockUUID.mockImplementation(() => faker.string.uuid());
+    mockUUID.mockImplementation(() => '12345678-abcd-efgh-ijkl-123456789012');
   });
 
   it('has default state', () => {
@@ -38,12 +37,12 @@ describe('createNotesSlice', () => {
   });
 
   it('loads notes from cache', async () => {
-    const city = faker.location.city();
+    const city = 'Tokyo';
     const fakeNote: Note = {
-      id: faker.string.uuid(),
+      id: 'note-uuid-1',
       city,
-      content: faker.lorem.sentence(),
-      createdAt: faker.date.past().toISOString(),
+      content: 'This is a test note content',
+      createdAt: new Date('2022-12-01T10:00:00Z').toISOString(),
     };
 
     const cachedNotes: NotesByCity = { [city]: [fakeNote] };
@@ -65,9 +64,9 @@ describe('createNotesSlice', () => {
   });
 
   it('adds a note and updates cache', async () => {
-    const city = faker.location.city();
-    const content = faker.lorem.sentence();
-    const fakeId = faker.string.uuid();
+    const city = 'New York';
+    const content = 'New note content';
+    const fakeId = 'add-note-uuid';
     mockUUID.mockReturnValueOnce(fakeId);
 
     await store.getState().addNote(city, content);
@@ -87,17 +86,17 @@ describe('createNotesSlice', () => {
   });
 
   it('updates a note and calls setCache', async () => {
-    const city = faker.location.city();
-    const id = faker.string.uuid();
+    const city = 'Chicago';
+    const id = 'update-note-uuid';
     const original: Note = {
       id,
       city,
-      content: faker.lorem.sentence(),
+      content: 'Original note content',
       createdAt: new Date().toISOString(),
     };
     store.setState({ notes: { [city]: [original] } });
 
-    const newContent = faker.lorem.paragraph();
+    const newContent = 'Updated note content with more details about the weather conditions';
     await store.getState().updateNote(city, id, newContent);
 
     const updatedNote = store.getState().notes[city][0];
@@ -106,17 +105,17 @@ describe('createNotesSlice', () => {
   });
 
   it('removes a note and calls setCache', async () => {
-    const city = faker.location.city();
+    const city = 'Seattle';
     const note1: Note = {
-      id: faker.string.uuid(),
+      id: 'remove-note-1-uuid',
       city,
-      content: faker.lorem.sentence(),
+      content: 'First note to be removed',
       createdAt: new Date().toISOString(),
     };
     const note2: Note = {
-      id: faker.string.uuid(),
+      id: 'remove-note-2-uuid',
       city,
-      content: faker.lorem.sentence(),
+      content: 'Second note to remain',
       createdAt: new Date().toISOString(),
     };
     store.setState({ notes: { [city]: [note1, note2] } });

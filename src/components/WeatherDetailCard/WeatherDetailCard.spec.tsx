@@ -1,6 +1,5 @@
-import { render, screen } from '@testing-library/react';
 import { describe, it, beforeEach, expect } from 'vitest';
-import { faker } from '@faker-js/faker';
+import { render, screen } from '@testing-library/react';
 import WeatherDetailCard from './WeatherDetailCard';
 
 describe('WeatherDetailCard Component (unit/integration)', () => {
@@ -9,10 +8,9 @@ describe('WeatherDetailCard Component (unit/integration)', () => {
   let icon: string;
 
   beforeEach(() => {
-    faker.seed(456);
-    label = faker.word.words(2);
-    value = `${faker.number.int({ min: 10, max: 100 })} %`;
-    icon = `${faker.string.alphanumeric(8)}.svg`;
+    label = 'Test Label';
+    value = '65 %';
+    icon = 'testicon.svg';
   });
 
   const renderCard = (

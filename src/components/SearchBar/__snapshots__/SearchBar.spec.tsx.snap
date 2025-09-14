@@ -3,8 +3,8 @@
 exports[`SearchBar Component (unit) > matches snapshot 1`] = `
 <input
   class="bg-gray w-full lg:w-[45%] rounded-xl p-3"
-  placeholder="addo titulus"
+  placeholder="search placeholder"
   type="text"
-  value="Kuhlmanfield"
+  value="Orlando"
 />
 `;

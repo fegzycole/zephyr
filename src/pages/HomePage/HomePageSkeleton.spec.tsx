@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { render, screen } from '@testing-library/react';
 import { HomePageSkeleton } from './HomePageSkeleton';
 
 vi.mock('../../components/WeatherCard', () => ({

@@ -1,6 +1,6 @@
+import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import NoWeatherData from './NoWeatherData';
-import { describe, it, expect } from 'vitest';
 
 describe('NoWeatherData', () => {
   it('renders correctly and matches snapshot', () => {

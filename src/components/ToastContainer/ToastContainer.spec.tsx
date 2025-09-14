@@ -1,6 +1,6 @@
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import ToastContainer from './ToastContainer';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 type Toast = { id: string; type: 'info' | 'error' | 'warn'; message: string };
 interface StoreState {
@@ -18,6 +18,7 @@ vi.mock('../../store', () => {
 
 describe('ToastContainer', () => {
   beforeEach(() => {
+    vi.clearAllMocks();
     mockToasts = [];
   });
 

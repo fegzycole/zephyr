@@ -1,5 +1,5 @@
-import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { beforeEach, afterEach, describe, it, expect, vi } from 'vitest';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import NoteSection from './NoteSection';
 import { useStore } from '@store/store';
 
@@ -17,6 +17,7 @@ describe('NoteSection', () => {
 
   beforeEach(() => {
     cleanup();
+    vi.clearAllMocks();
     addNoteSpy = vi.fn();
     setStore({
       addNote: addNoteSpy,

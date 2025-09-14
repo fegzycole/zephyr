@@ -1,5 +1,4 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { faker } from '@faker-js/faker';
 import { redirectIfNeeded } from './redirectHelpers';
 import { ITransformedWeatherRealTimeDetails } from '@api/data-hooks/weather/types';
 
@@ -7,18 +6,18 @@ function makeWeatherDetails(
   overrides?: Partial<ITransformedWeatherRealTimeDetails>
 ): ITransformedWeatherRealTimeDetails {
   return {
-    name: faker.location.city(),
-    region: faker.location.city(),
-    time: faker.date.recent().toISOString(),
-    temperature: faker.number.int({ min: -10, max: 40 }).toString(),
-    icon: faker.string.alpha(5),
-    uvIndex: faker.number.int({ min: 0, max: 11 }),
-    wind: faker.number.int({ min: 0, max: 100 }),
-    humidity: faker.number.int({ min: 0, max: 100 }),
-    visibility: faker.number.int({ min: 0, max: 10 }),
-    feelsLike: faker.number.int({ min: -10, max: 40 }),
-    pressure: faker.number.int({ min: 950, max: 1050 }),
-    sunset: faker.date.soon().toISOString(),
+    name: 'Default City',
+    region: 'Default Region',
+    time: new Date('2023-01-01T10:00:00Z').toISOString(),
+    temperature: '20',
+    icon: 'sunny',
+    uvIndex: 5,
+    wind: 15,
+    humidity: 60,
+    visibility: 8,
+    feelsLike: 22,
+    pressure: 1013,
+    sunset: new Date('2023-01-02T18:00:00Z').toISOString(),
     ...overrides,
   };
 }
@@ -39,7 +38,7 @@ describe('redirectIfNeeded', () => {
   });
 
   it('navigates and sets geoRedirected when first element has a name', () => {
-    const cityName = faker.location.city();
+    const cityName = 'Los Angeles';
     const data = makeWeatherDetails({ name: cityName });
 
     redirectIfNeeded(data, navigate);

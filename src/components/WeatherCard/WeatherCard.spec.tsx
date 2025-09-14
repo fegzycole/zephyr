@@ -1,15 +1,6 @@
+import { describe, it, expect, vi, beforeAll, afterAll, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import {
-  describe,
-  it,
-  beforeAll,
-  afterAll,
-  beforeEach,
-  expect,
-  vi,
-} from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
-import { faker } from '@faker-js/faker';
 import { WeatherCard } from './WeatherCard';
 
 describe('WeatherCard Component (unit/integration)', () => {
@@ -30,11 +21,11 @@ describe('WeatherCard Component (unit/integration)', () => {
   });
 
   beforeEach(() => {
-    faker.seed(321);
-    city = faker.location.city();
+    vi.clearAllMocks();
+    city = 'London';
     time = new Date().toLocaleTimeString();
-    temp = faker.number.int({ min: -10, max: 40 }).toString();
-    icon = faker.image.url();
+    temp = '32';
+    icon = 'https://test.example.com/weather-icon.png';
     onFavoriteToggle = vi.fn();
     onRemoveCity = vi.fn();
   });

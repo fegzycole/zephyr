@@ -1,6 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
-import { faker } from '@faker-js/faker';
 import Cities from './Cities';
 
 import type {
@@ -47,24 +46,25 @@ vi.mock('@store', () => ({
   useStore: (selector: (s: Store) => unknown) => selector(mockState),
 }));
 
+let cityCounter = 1;
 const makeWeatherDetails = (): ITransformedWeatherRealTimeDetails => ({
-  name: faker.location.city(),
-  region: faker.location.city(),
-  time: faker.date.recent().toISOString(),
-  temperature: faker.number.int({ min: -20, max: 40 }).toString(),
-  icon: faker.image.url(),
-  uvIndex: faker.number.int({ min: 0, max: 11 }),
-  wind: faker.number.int({ min: 0, max: 100 }),
-  humidity: faker.number.int({ min: 0, max: 100 }),
-  visibility: faker.number.int({ min: 100, max: 20000 }),
-  feelsLike: faker.number.int({ min: -20, max: 40 }),
-  pressure: faker.number.int({ min: 950, max: 1050 }),
-  sunset: faker.date.soon().toISOString(),
+  name: `TestCity${cityCounter++}`,
+  region: `TestRegion${cityCounter - 1}`,
+  time: new Date('2023-01-01T16:00:00Z').toISOString(),
+  temperature: '24',
+  icon: 'https://test.example.com/weather-icon.png',
+  uvIndex: 4,
+  wind: 10,
+  humidity: 55,
+  visibility: 8000,
+  feelsLike: 26,
+  pressure: 1018,
+  sunset: new Date('2023-01-01T19:30:00Z').toISOString(),
 });
 
 describe('Cities component', () => {
   beforeEach(() => {
-    faker.seed(123);
+    cityCounter = 1;
 
     cleanup();
 

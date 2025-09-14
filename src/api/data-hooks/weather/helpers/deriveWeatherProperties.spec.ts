@@ -1,5 +1,4 @@
-import { describe, it, expect } from 'vitest';
-import { faker } from '@faker-js/faker';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { deriveWeatherProperties } from './deriveWeatherProperties';
 import {
   mapDetailsToText,
@@ -9,23 +8,24 @@ import {
 import type { ITransformedWeatherRealTimeDetails } from '../types';
 
 describe('deriveWeatherProperties', () => {
+  beforeEach(() => {
+    // Test setup
+  });
+
   it('maps all details with correct label, value, and icon', () => {
     const mockData: ITransformedWeatherRealTimeDetails = {
-      name: faker.location.city(),
-      region: faker.location.city(),
-      time: faker.date.recent().toISOString(),
-      temperature: `${faker.number.int({ min: -10, max: 40 })}°C`,
-      icon: faker.image.url(),
-      uvIndex: faker.number.int({ min: 0, max: 11 }),
-      wind: faker.number.int({ min: 0, max: 150 }),
-      humidity: faker.number.int({ min: 0, max: 100 }),
-      visibility: faker.number.int({ min: 0, max: 20 }),
-      feelsLike: faker.number.int({ min: -15, max: 45 }),
-      pressure: faker.number.int({ min: 950, max: 1050 }),
-      sunset: `${faker.number.int({ min: 1, max: 12 })}:${faker.number
-        .int({ min: 0, max: 59 })
-        .toString()
-        .padStart(2, '0')} PM`,
+      name: 'Phoenix',
+      region: 'Arizona',
+      time: new Date('2023-01-01T16:30:00Z').toISOString(),
+      temperature: '30°C',
+      icon: 'https://test.example.com/weather-icon.png',
+      uvIndex: 8,
+      wind: 22,
+      humidity: 45,
+      visibility: 15,
+      feelsLike: 35,
+      pressure: 1008,
+      sunset: '7:45 PM',
     };
 
     const result = deriveWeatherProperties(mockData);
@@ -47,39 +47,33 @@ describe('deriveWeatherProperties', () => {
 
   it('produces different values for different input objects', () => {
     const mockData1: ITransformedWeatherRealTimeDetails = {
-      name: faker.location.city(),
-      region: faker.location.city(),
-      time: faker.date.recent().toISOString(),
-      temperature: `${faker.number.int({ min: -10, max: 40 })}°C`,
-      icon: faker.image.url(),
-      uvIndex: faker.number.int({ min: 0, max: 11 }),
-      wind: faker.number.int({ min: 0, max: 150 }),
-      humidity: faker.number.int({ min: 0, max: 100 }),
-      visibility: faker.number.int({ min: 0, max: 20 }),
-      feelsLike: faker.number.int({ min: -15, max: 45 }),
-      pressure: faker.number.int({ min: 950, max: 1050 }),
-      sunset: `${faker.number.int({ min: 1, max: 12 })}:${faker.number
-        .int({ min: 0, max: 59 })
-        .toString()
-        .padStart(2, '0')} PM`,
+      name: 'Denver',
+      region: 'Colorado',
+      time: new Date('2023-01-02T14:15:00Z').toISOString(),
+      temperature: '18°C',
+      icon: 'https://test.example.com/weather-icon2.png',
+      uvIndex: 5,
+      wind: 12,
+      humidity: 70,
+      visibility: 10,
+      feelsLike: 20,
+      pressure: 1020,
+      sunset: '6:30 PM',
     };
 
     const mockData2: ITransformedWeatherRealTimeDetails = {
-      name: faker.location.city(),
-      region: faker.location.city(),
-      time: faker.date.recent().toISOString(),
-      temperature: `${faker.number.int({ min: -10, max: 40 })}°C`,
-      icon: faker.image.url(),
-      uvIndex: faker.number.int({ min: 0, max: 11 }),
-      wind: faker.number.int({ min: 0, max: 150 }),
-      humidity: faker.number.int({ min: 0, max: 100 }),
-      visibility: faker.number.int({ min: 0, max: 20 }),
-      feelsLike: faker.number.int({ min: -15, max: 45 }),
-      pressure: faker.number.int({ min: 950, max: 1050 }),
-      sunset: `${faker.number.int({ min: 1, max: 12 })}:${faker.number
-        .int({ min: 0, max: 59 })
-        .toString()
-        .padStart(2, '0')} PM`,
+      name: 'Austin',
+      region: 'Texas',
+      time: new Date('2023-01-03T12:00:00Z').toISOString(),
+      temperature: '25°C',
+      icon: 'https://test.example.com/weather-icon3.png',
+      uvIndex: 6,
+      wind: 8,
+      humidity: 80,
+      visibility: 5,
+      feelsLike: 28,
+      pressure: 1025,
+      sunset: '8:15 PM',
     };
 
     const result1 = deriveWeatherProperties(mockData1);
