@@ -3,8 +3,8 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { faker } from '@faker-js/faker';
 import WeatherPage from './WeatherPage';
-import { useWeatherRealTime } from '../../api/weather';
-import { deriveWeatherProperties } from '../../api/weather/helpers/deriveWeatherProperties';
+import { useWeatherRealTime } from '../../api/data-hooks/weather';
+import { deriveWeatherProperties } from '../../api/data-hooks/weather/helpers/deriveWeatherProperties';
 
 type UseWeatherRealTimeType = typeof useWeatherRealTime;
 const mockedUseWeatherRealTime = vi.mocked(useWeatherRealTime, true);

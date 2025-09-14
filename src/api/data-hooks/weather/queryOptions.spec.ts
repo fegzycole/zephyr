@@ -4,7 +4,7 @@ import { QueryClient, type QueryFunctionContext } from '@tanstack/react-query';
 import { getWeatherRealTimeOptions } from './queryOptions';
 import { weatherKeys } from './queryKeys';
 import type { WeatherEndpointMap, IGetWeatherRealTimeSingle } from './types';
-import * as storage from '../../utils/storage';
+import * as storage from '../../../utils/storage';
 import { faker } from '@faker-js/faker';
 
 const addToast = vi.fn();

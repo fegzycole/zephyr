@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useWeatherRealTime } from '../api/weather';
+import { useWeatherRealTime } from '../api/data-hooks/weather';
 import { showErrorToast } from './helpers/errorHelpers';
 import {
   requestLocation,

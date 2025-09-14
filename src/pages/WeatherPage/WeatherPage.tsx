@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useWeatherRealTime } from '../../api/weather';
+import { useWeatherRealTime } from '../../api/data-hooks/weather';
 import WeatherDetailCard from '../../components/WeatherDetailCard';
 import WeatherHero from '../../components/WeatherHero';
 import NotesSection from '../../components/NotesSection';
 import { WeatherPageSkeleton } from './WeatherPageSkeleton';
-import { deriveWeatherProperties } from '../../api/weather/helpers/deriveWeatherProperties';
+import { deriveWeatherProperties } from '../../api/data-hooks/weather/helpers/deriveWeatherProperties';
 import NoWeatherData from '../../components/NoWeatherData';
 
 export default function WeatherPage() {

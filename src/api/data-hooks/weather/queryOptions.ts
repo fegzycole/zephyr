@@ -2,7 +2,7 @@ import { queryOptions } from '@tanstack/react-query';
 import axios from 'axios';
 import { IGetWeatherRealTimeSingle, WeatherEndpointMap } from './types';
 import { weatherKeys } from './queryKeys';
-import { setCache, getCache } from '../../utils/storage';
+import { setCache, getCache } from '../../../utils/storage';
 import { buildCacheKey } from './helpers/buildCacheKey';
 import { buildQueryParams } from './helpers/buildQueryParams';
 import { showWeatherErrorToast } from './helpers/showWeatherErrorToast';

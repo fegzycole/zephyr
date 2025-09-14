@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { useWeatherRealTime } from '../../api/weather';
+import { useWeatherRealTime } from '../../api/data-hooks/weather';
 import { useStore } from '../../store';
 import { HomePageSkeleton } from './HomePageSkeleton';
 import { useShallow } from 'zustand/react/shallow';
