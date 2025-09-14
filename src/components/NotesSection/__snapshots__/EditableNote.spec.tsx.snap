@@ -2,7 +2,7 @@
 
 exports[`EditableNote > matches snapshot (default state) 1`] = `
 <div
-  class="relative max-w-full flex justify-end group my-5"
+  class="relative max-w-full flex justify-end group mt-5 mb-15"
 >
   <div
     data-testid="comment-bubble"

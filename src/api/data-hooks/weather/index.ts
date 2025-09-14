@@ -1,1 +1,4 @@
-export { useWeatherRealTime } from './queries';
+export {
+  useGetWeatherRealTime,
+  useGetWeatherRealTimeMultiple,
+} from './queries';

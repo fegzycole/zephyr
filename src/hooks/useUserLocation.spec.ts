@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { useUserLocation } from './useUserLocation';
-import { useWeatherRealTime } from '@api/data-hooks/weather';
+import { useGetWeatherRealTime } from '@api/data-hooks/weather';
 import { showErrorToast } from './helpers/errorHelpers';
 import {
   requestLocation,
@@ -10,8 +10,8 @@ import {
 import { redirectIfNeeded } from './helpers/redirectHelpers';
 import { useStore } from '../store';
 
-vi.mock('../api/data-hooks/weather', () => ({
-  useWeatherRealTime: vi.fn(),
+vi.mock('@/api/data-hooks/weather', () => ({
+  useGetWeatherRealTime: vi.fn(),
 }));
 
 vi.mock('./helpers/errorHelpers', () => ({
@@ -41,9 +41,9 @@ describe('useUserLocation', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     (useStore as unknown as ReturnType<typeof vi.fn>).mockReturnValue(addToast);
-    (useWeatherRealTime as unknown as ReturnType<typeof vi.fn>).mockReturnValue(
-      { data: undefined }
-    );
+    (
+      useGetWeatherRealTime as unknown as ReturnType<typeof vi.fn>
+    ).mockReturnValue({ data: undefined });
   });
 
   it('calls requestLocation and watchPermissionChanges on mount', () => {
@@ -54,25 +54,23 @@ describe('useUserLocation', () => {
   });
 
   it('calls redirectIfNeeded when coords and data are set', () => {
-    (useWeatherRealTime as unknown as ReturnType<typeof vi.fn>).mockReturnValue(
-      {
-        data: [
-          {
-            name: 'Berlin',
-            time: '',
-            temperature: '',
-            icon: '',
-            uvIndex: 0,
-            wind: 0,
-            humidity: 0,
-            visibility: 0,
-            feelsLike: 0,
-            pressure: 0,
-            sunset: '',
-          },
-        ],
-      }
-    );
+    (
+      useGetWeatherRealTime as unknown as ReturnType<typeof vi.fn>
+    ).mockReturnValue({
+      data: {
+        name: 'Berlin',
+        time: '',
+        temperature: '',
+        icon: '',
+        uvIndex: 0,
+        wind: 0,
+        humidity: 0,
+        visibility: 0,
+        feelsLike: 0,
+        pressure: 0,
+        sunset: '',
+      },
+    });
 
     (requestLocation as unknown as ReturnType<typeof vi.fn>).mockImplementation(
       (setCoords) => {
@@ -83,7 +81,7 @@ describe('useUserLocation', () => {
     renderHook(() => useUserLocation());
 
     expect(redirectIfNeeded).toHaveBeenCalledWith(
-      expect.any(Array),
+      expect.any(Object),
       expect.any(Function)
     );
   });

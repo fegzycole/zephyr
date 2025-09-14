@@ -31,17 +31,8 @@ describe('redirectIfNeeded', () => {
     sessionStorage.clear();
   });
 
-  it('does nothing if data is empty', () => {
-    redirectIfNeeded([], navigate);
-
-    expect(navigate).not.toHaveBeenCalled();
-    expect(sessionStorage.getItem('geoRedirected')).toBeNull();
-  });
-
-  it('does nothing if first element has no name', () => {
-    const data = [makeWeatherDetails({ name: '' })];
-
-    redirectIfNeeded(data, navigate);
+  it('does nothing if data is undefined', () => {
+    redirectIfNeeded(undefined, navigate);
 
     expect(navigate).not.toHaveBeenCalled();
     expect(sessionStorage.getItem('geoRedirected')).toBeNull();
@@ -49,7 +40,7 @@ describe('redirectIfNeeded', () => {
 
   it('navigates and sets geoRedirected when first element has a name', () => {
     const cityName = faker.location.city();
-    const data = [makeWeatherDetails({ name: cityName })];
+    const data = makeWeatherDetails({ name: cityName });
 
     redirectIfNeeded(data, navigate);
 
@@ -61,7 +52,7 @@ describe('redirectIfNeeded', () => {
 
   it('does not navigate again if geoRedirected is already set', () => {
     sessionStorage.setItem('geoRedirected', 'true');
-    const data = [makeWeatherDetails()];
+    const data = makeWeatherDetails();
 
     redirectIfNeeded(data, navigate);
 
@@ -71,7 +62,7 @@ describe('redirectIfNeeded', () => {
 
   it('encodes city names with spaces', () => {
     const cityName = 'New York';
-    const data = [makeWeatherDetails({ name: cityName })];
+    const data = makeWeatherDetails({ name: cityName });
 
     redirectIfNeeded(data, navigate);
 

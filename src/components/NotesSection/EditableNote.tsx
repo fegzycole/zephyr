@@ -22,7 +22,7 @@ export default function EditableNote({ value, id, city }: IEditableNote) {
   };
 
   return (
-    <div className="relative max-w-full flex justify-end group my-5">
+    <div className="relative max-w-full flex justify-end group mt-5 mb-15">
       <NoteBubble>
         {!isEditing ? (
           <p className="font-lighter text-base text-subtle">{text}</p>

@@ -1,6 +1,6 @@
 import { queryOptions } from '@tanstack/react-query';
 import axios from 'axios';
-import { IGetWeatherRealTimeSingle, WeatherEndpointMap } from './types';
+import { IGetWeatherRealTimeParams, WeatherEndpointMap } from './types';
 import { weatherKeys } from './queryKeys';
 import { setCache, getCache } from '@utils/storage';
 import { buildCacheKey } from './helpers/buildCacheKey';
@@ -30,6 +30,7 @@ export async function fetchWithCache<T extends keyof WeatherEndpointMap>(
     if (axios.isAxiosError(error)) {
       showWeatherErrorToast(error.response?.data?.error?.code);
     } else {
+      console.log({ error });
       showWeatherErrorToast();
     }
 
@@ -37,14 +38,15 @@ export async function fetchWithCache<T extends keyof WeatherEndpointMap>(
   }
 }
 
-export function getWeatherRealTimeOptions(params: IGetWeatherRealTimeSingle) {
+export function getWeatherRealTimeOptions(params: IGetWeatherRealTimeParams) {
   return queryOptions({
-    queryKey: weatherKeys.realTime(params),
+    queryKey: weatherKeys.detail(params),
     queryFn: () => fetchWithCache('current', params),
     retry: false,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
     refetchInterval: false,
     staleTime: Infinity,
+    enabled: !!params.query,
   });
 }

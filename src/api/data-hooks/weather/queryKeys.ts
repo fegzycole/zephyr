@@ -1,7 +1,6 @@
-import { IGetWeatherRealTimeSingle } from './types';
+import { IGetWeatherRealTimeParams } from './types';
 
 export const weatherKeys = {
-  realTime: (
-    params: Omit<IGetWeatherRealTimeSingle, 'query'> & { query: string }
-  ) => [{ scope: 'weather', entity: 'realtime', ...params }] as const,
+  detail: (params: IGetWeatherRealTimeParams) =>
+    [{ scope: 'weather', entity: 'realtime', ...params }] as const,
 };

@@ -3,17 +3,17 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { faker } from '@faker-js/faker';
 import WeatherPage from './WeatherPage';
-import { useWeatherRealTime } from '@api/data-hooks/weather';
+import { useGetWeatherRealTime } from '@api/data-hooks/weather';
 import { deriveWeatherProperties } from '@api/data-hooks/weather/helpers/deriveWeatherProperties';
 import { ITransformedWeatherRealTimeDetails } from '@/api/data-hooks/weather/types';
 import { IWeatherDetailCard } from '@/components/WeatherDetailCard/WeatherDetailCard';
 import { INoteSection } from '@/components/NotesSection/NoteSection';
 
-const mockedUseWeatherRealTime = vi.mocked(useWeatherRealTime, true);
+const mockedUseGetWeatherRealTime = vi.mocked(useGetWeatherRealTime, true);
 const mockedDeriveWeatherProperties = vi.mocked(deriveWeatherProperties, true);
 
 vi.mock('@api/data-hooks/weather', () => ({
-  useWeatherRealTime: vi.fn(),
+  useGetWeatherRealTime: vi.fn(),
 }));
 
 vi.mock('@api/data-hooks/weather/helpers/deriveWeatherProperties', () => ({
@@ -21,10 +21,7 @@ vi.mock('@api/data-hooks/weather/helpers/deriveWeatherProperties', () => ({
 }));
 
 vi.mock('@components/WeatherHero', () => ({
-  default: ({
-    temperature,
-    icon,
-  }: ITransformedWeatherRealTimeDetails) => (
+  default: ({ temperature, icon }: ITransformedWeatherRealTimeDetails) => (
     <div data-testid="weather-hero">
       {temperature} - {icon}
     </div>
@@ -74,9 +71,9 @@ describe('WeatherPage', () => {
   });
 
   it('redirects to userCity if no city param', async () => {
-    mockedUseWeatherRealTime.mockReturnValue({
+    mockedUseGetWeatherRealTime.mockReturnValue({
       isLoading: false,
-      data: [],
+      data: undefined,
     });
 
     render(
@@ -103,9 +100,9 @@ describe('WeatherPage', () => {
   });
 
   it('renders skeleton while loading', () => {
-    mockedUseWeatherRealTime.mockReturnValue({
+    mockedUseGetWeatherRealTime.mockReturnValue({
       isLoading: true,
-      data: [],
+      data: undefined,
     });
 
     renderWithRouter();
@@ -114,9 +111,9 @@ describe('WeatherPage', () => {
   });
 
   it('returns null if no weatherData', () => {
-    mockedUseWeatherRealTime.mockReturnValue({
+    mockedUseGetWeatherRealTime.mockReturnValue({
       isLoading: false,
-      data: [],
+      data: undefined,
     });
 
     renderWithRouter();
@@ -134,24 +131,22 @@ describe('WeatherPage', () => {
       { label: 'Wind', value: '10 km/h', icon: 'icon-shower.svg' },
     ]);
 
-    mockedUseWeatherRealTime.mockReturnValue({
+    mockedUseGetWeatherRealTime.mockReturnValue({
       isLoading: false,
-      data: [
-        {
-          name: mockCity,
-          region: mockCity,
-          temperature: mockTemp.toString(),
-          icon: mockIcon,
-          uvIndex: faker.number.int({ min: 0, max: 11 }),
-          wind: faker.number.int({ min: 0, max: 100 }),
-          humidity: faker.number.int({ min: 10, max: 100 }),
-          visibility: faker.number.int({ min: 1, max: 20 }),
-          feelsLike: faker.number.float({ min: -15, max: 45 }),
-          pressure: faker.number.int({ min: 950, max: 1050 }),
-          sunset: faker.date.soon().toISOString(),
-          time: faker.date.anytime().toDateString(),
-        },
-      ],
+      data: {
+        name: mockCity,
+        region: mockCity,
+        temperature: mockTemp.toString(),
+        icon: mockIcon,
+        uvIndex: faker.number.int({ min: 0, max: 11 }),
+        wind: faker.number.int({ min: 0, max: 100 }),
+        humidity: faker.number.int({ min: 10, max: 100 }),
+        visibility: faker.number.int({ min: 1, max: 20 }),
+        feelsLike: faker.number.float({ min: -15, max: 45 }),
+        pressure: faker.number.int({ min: 950, max: 1050 }),
+        sunset: faker.date.soon().toISOString(),
+        time: faker.date.anytime().toDateString(),
+      },
     });
 
     renderWithRouter(`/?city=${mockCity}`);
@@ -172,24 +167,22 @@ describe('WeatherPage', () => {
       { label: 'Wind', value: '10 km/h', icon: 'icon-shower.svg' },
     ]);
 
-    mockedUseWeatherRealTime.mockReturnValue({
+    mockedUseGetWeatherRealTime.mockReturnValue({
       isLoading: false,
-      data: [
-        {
-          name: city,
-          region: city,
-          temperature: temp.toString(),
-          icon: 'icon.png',
-          uvIndex: 5,
-          wind: 10,
-          humidity: 42,
-          visibility: 10,
-          feelsLike: 27,
-          pressure: 1000,
-          sunset: '2025-09-09T18:30:00Z',
-          time: 'Tue Sep 09 2025',
-        },
-      ],
+      data: {
+        name: city,
+        region: city,
+        temperature: temp.toString(),
+        icon: 'icon.png',
+        uvIndex: 5,
+        wind: 10,
+        humidity: 42,
+        visibility: 10,
+        feelsLike: 27,
+        pressure: 1000,
+        sunset: '2025-09-09T18:30:00Z',
+        time: 'Tue Sep 09 2025',
+      },
     });
 
     const { asFragment } = renderWithRouter(`/?city=${city}`);

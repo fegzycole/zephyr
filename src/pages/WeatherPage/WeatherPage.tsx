@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useWeatherRealTime } from '@api/data-hooks/weather';
+import { useGetWeatherRealTime } from '@api/data-hooks/weather';
 import WeatherDetailCard from '@components/WeatherDetailCard';
 import WeatherHero from '@components/WeatherHero';
 import NotesSection from '@components/NotesSection';
@@ -18,32 +18,24 @@ export default function WeatherPage() {
     }
   }, [city, setSearchParams]);
 
-  const { isLoading, data } = useWeatherRealTime(
-    city
-      ? {
-          query: [city],
-          access_key: import.meta.env.VITE_WEATHER_API_KEY,
-        }
-      : { query: [], access_key: '' }
-  );
-
-  const weatherData = data?.[0];
+  const { isLoading, data } = useGetWeatherRealTime({
+    query: city ?? '',
+    access_key: import.meta.env.VITE_WEATHER_API_KEY,
+  });
 
   if (!city) return null;
   if (isLoading) return <WeatherPageSkeleton />;
-  if (!weatherData) return <NoWeatherData />;
+  if (!data) return <NoWeatherData />;
 
-  const weatherProperties = deriveWeatherProperties(weatherData);
-
-  console.log({ weatherData });
+  const weatherProperties = deriveWeatherProperties(data);
 
   return (
     <div className="w-full xl:w-[50%] mx-auto">
       <div className="mb-10">
         <WeatherHero
-          city={weatherData.name}
-          temperature={weatherData.temperature}
-          icon={weatherData.icon}
+          city={data.name}
+          temperature={data.temperature}
+          icon={data.icon}
         />
 
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-5 w-full">

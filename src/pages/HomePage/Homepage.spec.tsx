@@ -2,7 +2,7 @@ import React from 'react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { faker } from '@faker-js/faker';
-import { useWeatherRealTime } from '@api/data-hooks/weather';
+import { useGetWeatherRealTimeMultiple } from '@api/data-hooks/weather';
 import { useStore } from '@store';
 import { ITransformedWeatherRealTimeDetails } from '@api/data-hooks/weather/types';
 import '@testing-library/jest-dom';
@@ -10,7 +10,7 @@ import '@testing-library/jest-dom';
 import HomePage from './HomePage';
 
 vi.mock('@api/data-hooks/weather', () => ({
-  useWeatherRealTime: vi.fn(),
+  useGetWeatherRealTimeMultiple: vi.fn(),
 }));
 
 vi.mock('@store', () => ({
@@ -47,7 +47,7 @@ vi.mock('./HomePageSkeleton', () => ({
   HomePageSkeleton: () => <div data-testid="skeleton">Loading...</div>,
 }));
 
-const mockedUseWeatherRealTime = vi.mocked(useWeatherRealTime, true);
+const mockedUseWeatherRealTime = vi.mocked(useGetWeatherRealTimeMultiple, true);
 const mockedUseStore = vi.mocked(useStore);
 
 function makeWeather(city: string): ITransformedWeatherRealTimeDetails {
@@ -74,7 +74,11 @@ describe('HomePage', () => {
 
   it('renders the search bar', () => {
     mockedUseStore.mockReturnValue({ cities: [], favorites: [] });
-    mockedUseWeatherRealTime.mockReturnValue({ data: [], isLoading: false });
+    mockedUseWeatherRealTime.mockReturnValue({
+      data: [],
+      isLoading: false,
+      results: [],
+    });
 
     render(<HomePage />);
     expect(screen.getByTestId('searchbar')).toBeInTheDocument();
@@ -85,6 +89,7 @@ describe('HomePage', () => {
     mockedUseWeatherRealTime.mockReturnValue({
       data: [makeWeather('Paris')],
       isLoading: false,
+      results: [],
     });
 
     render(<HomePage />);
@@ -93,7 +98,7 @@ describe('HomePage', () => {
     expect(input.value).toBe('London');
 
     expect(mockedUseWeatherRealTime).toHaveBeenLastCalledWith(
-      expect.objectContaining({ query: ['London'] })
+      expect.objectContaining({ queries: ['London'] })
     );
   });
 
@@ -102,6 +107,7 @@ describe('HomePage', () => {
     mockedUseWeatherRealTime.mockReturnValue({
       data: [],
       isLoading: true,
+      results: [],
     });
 
     render(<HomePage />);
@@ -113,6 +119,7 @@ describe('HomePage', () => {
     mockedUseWeatherRealTime.mockReturnValue({
       data: [makeWeather('Paris')],
       isLoading: false,
+      results: [],
     });
 
     render(<HomePage />);
@@ -126,7 +133,11 @@ describe('HomePage', () => {
     });
 
     const data = [makeWeather('Tokyo'), makeWeather('London')];
-    mockedUseWeatherRealTime.mockReturnValue({ data, isLoading: false });
+    mockedUseWeatherRealTime.mockReturnValue({
+      data,
+      isLoading: false,
+      results: [],
+    });
 
     render(<HomePage />);
     expect(screen.getByTestId('cities')).toHaveTextContent('Tokyo,London');
@@ -139,7 +150,11 @@ describe('HomePage', () => {
     });
 
     const data = [makeWeather('Berlin'), makeWeather('Paris')];
-    mockedUseWeatherRealTime.mockReturnValue({ data, isLoading: false });
+    mockedUseWeatherRealTime.mockReturnValue({
+      data,
+      isLoading: false,
+      results: [],
+    });
 
     const { asFragment } = render(<HomePage />);
     expect(asFragment()).toMatchSnapshot();

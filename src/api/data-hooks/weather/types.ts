@@ -1,14 +1,12 @@
-export interface IGetWeatherRealTimeBase {
+export interface IGetWeatherRealTimeParams {
   access_key: string;
+  query?: string;
 }
 
-export interface IGetWeatherRealTimeParams extends IGetWeatherRealTimeBase {
-  query: string[];
+export interface IUseGetWeatherRealTimeMultipleParams {
+  access_key: string;
+  queries: string[];
 }
-
-export type IGetWeatherRealTimeSingle = IGetWeatherRealTimeBase & {
-  query: string;
-};
 
 export interface IWeatherLocation {
   name: string;
@@ -73,7 +71,7 @@ export interface ITransformedWeatherRealTimeDetails {
 
 export type WeatherEndpointMap = {
   current: {
-    params: IGetWeatherRealTimeSingle;
+    params: IGetWeatherRealTimeParams;
     response: IGetWeatherRealTimeResponse | undefined;
   };
 };

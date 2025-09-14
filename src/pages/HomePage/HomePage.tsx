@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { useWeatherRealTime } from '@api/data-hooks/weather';
+import { useGetWeatherRealTimeMultiple } from '@api/data-hooks/weather';
 import { useStore } from '@store';
 import { HomePageSkeleton } from './HomePageSkeleton';
 import { useShallow } from 'zustand/react/shallow';
@@ -25,9 +25,9 @@ export default function HomePage() {
     ];
   }, [city, favorites, cities]);
 
-  const { data, isLoading } = useWeatherRealTime({
+  const { data, isLoading } = useGetWeatherRealTimeMultiple({
     access_key: import.meta.env.VITE_WEATHER_API_KEY,
-    query: allCities,
+    queries: allCities,
   });
 
   return (

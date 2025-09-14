@@ -3,7 +3,7 @@ import axios from 'axios';
 import { QueryClient, type QueryFunctionContext } from '@tanstack/react-query';
 import { getWeatherRealTimeOptions } from './queryOptions';
 import { weatherKeys } from './queryKeys';
-import type { WeatherEndpointMap, IGetWeatherRealTimeSingle } from './types';
+import type { WeatherEndpointMap, IGetWeatherRealTimeParams } from './types';
 import * as storage from '@utils/storage';
 import { faker } from '@faker-js/faker';
 
@@ -15,7 +15,7 @@ vi.mock('@store', () => ({
 }));
 
 describe('getWeatherRealTimeOptions', () => {
-  const params: IGetWeatherRealTimeSingle = {
+  const params: IGetWeatherRealTimeParams = {
     access_key: faker.string.uuid(),
     query: faker.location.city(),
   };
@@ -54,11 +54,11 @@ describe('getWeatherRealTimeOptions', () => {
   });
 
   function makeContext(): QueryFunctionContext<
-    ReturnType<typeof weatherKeys.realTime>
+    ReturnType<typeof weatherKeys.detail>
   > {
     return {
       client: new QueryClient(),
-      queryKey: weatherKeys.realTime(params),
+      queryKey: weatherKeys.detail(params),
       signal: new AbortController().signal,
       meta: undefined,
       pageParam: undefined,

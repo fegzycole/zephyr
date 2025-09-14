@@ -1,17 +1,42 @@
-import { useQueries } from '@tanstack/react-query';
+import { useQueries, useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
 import { getWeatherRealTimeOptions } from './queryOptions';
-import { IGetWeatherRealTimeParams } from './types';
+import {
+  IGetWeatherRealTimeParams,
+  IUseGetWeatherRealTimeMultipleParams,
+} from './types';
 import { transformWeatherRealTimeResponse } from './helpers/transformers';
 
-export function useWeatherRealTime(params: IGetWeatherRealTimeParams) {
-  const { query } = params;
+export function useGetWeatherRealTime(params: IGetWeatherRealTimeParams) {
+  const queryOptions = getWeatherRealTimeOptions(params);
 
-  const results = useQueries({
-    queries: query.map((city) =>
-      getWeatherRealTimeOptions({ ...params, query: city })
-    ),
-  });
+  const { data: weatherResonseData, isLoading } = useQuery(queryOptions);
+
+  const data = useMemo(() => {
+    if (weatherResonseData) {
+      return transformWeatherRealTimeResponse(weatherResonseData);
+    }
+
+    return undefined;
+  }, [weatherResonseData]);
+
+  return {
+    data,
+    isLoading,
+  };
+}
+
+export function useGetWeatherRealTimeMultiple({
+  access_key,
+  queries,
+}: IUseGetWeatherRealTimeMultipleParams) {
+  const queryConfigs = useMemo(
+    () =>
+      queries.map((query) => getWeatherRealTimeOptions({ access_key, query })),
+    [access_key, queries]
+  );
+
+  const results = useQueries({ queries: queryConfigs });
 
   const data = useMemo(
     () =>
@@ -23,5 +48,9 @@ export function useWeatherRealTime(params: IGetWeatherRealTimeParams) {
 
   const isLoading = results.some((r) => r.isLoading);
 
-  return { isLoading, data };
+  return {
+    data,
+    isLoading,
+    results,
+  };
 }

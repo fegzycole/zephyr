@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useWeatherRealTime } from '../api/data-hooks/weather';
+import { useGetWeatherRealTime } from '../api/data-hooks/weather';
 import { showErrorToast } from './helpers/errorHelpers';
 import {
   requestLocation,
@@ -17,17 +17,10 @@ export function useUserLocation() {
   const addToast = useStore((s) => s.addToast);
   const navigate = useNavigate();
 
-  const { data } = useWeatherRealTime(
-    coords
-      ? {
-          access_key: import.meta.env.VITE_WEATHER_API_KEY,
-          query: [`${coords.latitude},${coords.longitude}`],
-        }
-      : {
-          access_key: import.meta.env.VITE_WEATHER_API_KEY,
-          query: [],
-        }
-  );
+  const { data } = useGetWeatherRealTime({
+    access_key: import.meta.env.VITE_WEATHER_API_KEY,
+    query: coords ? `${coords.latitude},${coords.longitude}` : '',
+  });
 
   useEffect(() => {
     const request = () => requestLocation(setCoords, setError);
