@@ -1,15 +1,15 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { mapGeolocationError, showErrorToast } from './errorHelpers';
-import * as storage from '../../utils/storage';
+import * as storage from '@utils/storage';
 
-vi.mock('../../utils/storage', () => {
+vi.mock('@utils/storage', () => {
   return {
     getCache: vi.fn<() => ReturnType<typeof storage.getCache>>(),
     setCache: vi.fn<() => ReturnType<typeof storage.setCache>>(),
   };
 });
 
-import { getCache, setCache } from '../../utils/storage';
+import { getCache, setCache } from '@utils/storage';
 
 describe('mapGeolocationError', () => {
   it('returns PERMISSION_DENIED when error code is 1', () => {

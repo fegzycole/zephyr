@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { showWeatherErrorToast } from './showWeatherErrorToast';
-import { useStore } from '../../../../store';
+import { useStore } from '@store';
 
 describe('showWeatherErrorToast', () => {
   const addToastMock = vi.fn();

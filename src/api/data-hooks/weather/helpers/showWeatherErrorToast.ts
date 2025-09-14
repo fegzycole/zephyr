@@ -1,4 +1,4 @@
-import { useStore } from '../../../../store';
+import { useStore } from '@store';
 
 export function showWeatherErrorToast(errorCode?: number) {
   const store = useStore.getState();

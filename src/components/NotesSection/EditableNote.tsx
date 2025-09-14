@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import NoteBox from './NoteBox';
-import { useStore } from '../../store';
+import { useStore } from '@store';
 import NoteBubble from './NoteBubble';
 import NoteActions from './NoteActions';
 

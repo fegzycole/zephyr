@@ -1,6 +1,6 @@
 import { StateCreator } from 'zustand';
 import { NotesSlice, Note, NotesByCity } from '../types';
-import { getCache, setCache } from '../../utils/storage';
+import { getCache, setCache } from '@utils/storage';
 import { NOTES_KEY } from '../keys';
 
 export const createNotesSlice: StateCreator<NotesSlice> = (set) => ({

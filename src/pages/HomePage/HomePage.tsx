@@ -1,11 +1,11 @@
 import { useState, useMemo } from 'react';
-import { useWeatherRealTime } from '../../api/data-hooks/weather';
-import { useStore } from '../../store';
+import { useWeatherRealTime } from '@api/data-hooks/weather';
+import { useStore } from '@store';
 import { HomePageSkeleton } from './HomePageSkeleton';
 import { useShallow } from 'zustand/react/shallow';
-import Cities from '../../components/Cities';
-import SearchBar from '../../components/SearchBar';
-import LoadMorePagination from '../../components/LoadMorePagination';
+import Cities from '@components/Cities';
+import SearchBar from '@components/SearchBar';
+import LoadMorePagination from '@components/LoadMorePagination';
 
 export default function HomePage() {
   const { favorites, cities } = useStore(

@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { useUserLocation } from './useUserLocation';
-import { useWeatherRealTime } from '../api/weather';
+import { useWeatherRealTime } from '@api/data-hooks/weather';
 import { showErrorToast } from './helpers/errorHelpers';
 import {
   requestLocation,
@@ -10,7 +10,7 @@ import {
 import { redirectIfNeeded } from './helpers/redirectHelpers';
 import { useStore } from '../store';
 
-vi.mock('../api/weather', () => ({
+vi.mock('../api/data-hooks/weather', () => ({
   useWeatherRealTime: vi.fn(),
 }));
 

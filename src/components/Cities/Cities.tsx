@@ -1,7 +1,7 @@
 import { useShallow } from 'zustand/react/shallow';
-import { ITransformedWeatherRealTimeDetails } from '../../api/weather/types';
-import { useStore } from '../../store';
-import { WeatherCard } from '../WeatherCard';
+import { ITransformedWeatherRealTimeDetails } from '@api/data-hooks/weather/types';
+import { useStore } from '@store';
+import { WeatherCard } from '@components/WeatherCard';
 
 interface ICities {
   data: (ITransformedWeatherRealTimeDetails | undefined)[];

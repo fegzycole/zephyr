@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 
-import { useStore } from './store';
+import { useStore } from '@store';
 import { useShallow } from 'zustand/react/shallow';
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import ToastContainer from './components/ToastContainer';
-import HomePage from './pages/HomePage';
-import WeatherPage from './pages/WeatherPage';
-import { useUserLocation } from './hooks/useUserLocation';
+import Navbar from '@components/Navbar';
+import ToastContainer from '@components/ToastContainer';
+import HomePage from '@pages/HomePage';
+import WeatherPage from '@pages/WeatherPage';
+import { useUserLocation } from '@hooks/useUserLocation';
 
 function App() {
   const { loadCities, loadFavorites, loadNotes } = useStore(

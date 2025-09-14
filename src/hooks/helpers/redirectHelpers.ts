@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { ITransformedWeatherRealTimeDetails } from '../../api/weather/types';
+import { ITransformedWeatherRealTimeDetails } from '@api/data-hooks/weather/types';
 
 export function redirectIfNeeded(
   data: (ITransformedWeatherRealTimeDetails | undefined)[],

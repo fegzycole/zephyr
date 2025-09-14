@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import WeatherHero from './WeatherHero';
-import { useStore } from '../../store';
+import { useStore } from '@store';
 import { describe, vi, beforeEach, it, expect } from 'vitest';
 
 describe('WeatherHero', () => {

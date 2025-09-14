@@ -1,4 +1,4 @@
-import { getCache, setCache } from '../../utils/storage';
+import { getCache, setCache } from '@utils/storage';
 import { LocationError } from '../types';
 
 export function mapGeolocationError(

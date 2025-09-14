@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useWeatherRealTime } from '../../api/data-hooks/weather';
-import WeatherDetailCard from '../../components/WeatherDetailCard';
-import WeatherHero from '../../components/WeatherHero';
-import NotesSection from '../../components/NotesSection';
+import { useWeatherRealTime } from '@api/data-hooks/weather';
+import WeatherDetailCard from '@components/WeatherDetailCard';
+import WeatherHero from '@components/WeatherHero';
+import NotesSection from '@components/NotesSection';
 import { WeatherPageSkeleton } from './WeatherPageSkeleton';
-import { deriveWeatherProperties } from '../../api/data-hooks/weather/helpers/deriveWeatherProperties';
-import NoWeatherData from '../../components/NoWeatherData';
+import { deriveWeatherProperties } from '@api/data-hooks/weather/helpers/deriveWeatherProperties';
+import NoWeatherData from '@components/NoWeatherData';
 
 export default function WeatherPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -34,6 +34,8 @@ export default function WeatherPage() {
   if (!weatherData) return <NoWeatherData />;
 
   const weatherProperties = deriveWeatherProperties(weatherData);
+
+  console.log({ weatherData });
 
   return (
     <div className="w-full xl:w-[50%] mx-auto">

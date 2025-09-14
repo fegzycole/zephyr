@@ -1,6 +1,6 @@
-import { WeatherHeroSkeleton } from '../../components/WeatherHero';
-import { WeatherDetailCardSkeleton } from '../../components/WeatherDetailCard';
-import { NoteSectionSkeleton } from '../../components/NotesSection/NoteSectionSkeleton';
+import { WeatherHeroSkeleton } from '@components/WeatherHero';
+import { WeatherDetailCardSkeleton } from '@components/WeatherDetailCard';
+import { NoteSectionSkeleton } from '@components/NotesSection/NoteSectionSkeleton';
 
 export function WeatherPageSkeleton() {
   return (

@@ -11,7 +11,7 @@ exports[`WeatherPage > matches snapshot when loaded with data 1`] = `
       <div
         data-testid="weather-hero"
       >
-        SnapshotCity - 25
+        25 - icon.png
       </div>
       <div
         class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-5 w-full"
@@ -19,12 +19,12 @@ exports[`WeatherPage > matches snapshot when loaded with data 1`] = `
         <div
           data-testid="weather-detail"
         >
-          Humidity: 42%
+          Humidity: 42% - icon-eye.svg
         </div>
         <div
           data-testid="weather-detail"
         >
-          Wind: 10 km/h
+          Wind: 10 km/h - icon-shower.svg
         </div>
       </div>
     </div>

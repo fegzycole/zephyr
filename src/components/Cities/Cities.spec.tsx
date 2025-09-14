@@ -8,8 +8,8 @@ import type {
   NotesSlice,
   CitiesSlice as CitiesSliceType,
   ToastSlice,
-} from '../../store/types';
-import type { ITransformedWeatherRealTimeDetails } from '../../api/weather/types';
+} from '@store/types';
+import type { ITransformedWeatherRealTimeDetails } from '@api/data-hooks/weather/types';
 
 type Store = FavoritesSlice &
   NotesSlice &
@@ -43,7 +43,7 @@ vi.mock('../WeatherCard', () => ({
 }));
 
 let mockState: Store;
-vi.mock('../../store', () => ({
+vi.mock('@store', () => ({
   useStore: (selector: (s: Store) => unknown) => selector(mockState),
 }));
 

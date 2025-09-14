@@ -1,4 +1,4 @@
-import { WeatherCardSkeleton } from '../../components/WeatherCard';
+import { WeatherCardSkeleton } from '@components/WeatherCard';
 
 export function HomePageSkeleton() {
   return (

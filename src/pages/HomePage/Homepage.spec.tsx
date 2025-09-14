@@ -2,28 +2,28 @@ import React from 'react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { faker } from '@faker-js/faker';
-import { useWeatherRealTime } from '../../api/weather';
-import { useStore } from '../../store';
-import { ITransformedWeatherRealTimeDetails } from '../../api/weather/types';
+import { useWeatherRealTime } from '@api/data-hooks/weather';
+import { useStore } from '@store';
+import { ITransformedWeatherRealTimeDetails } from '@api/data-hooks/weather/types';
 import '@testing-library/jest-dom';
 
 import HomePage from './HomePage';
 
-vi.mock('../../api/weather', () => ({
+vi.mock('@api/data-hooks/weather', () => ({
   useWeatherRealTime: vi.fn(),
 }));
 
-vi.mock('../../store', () => ({
+vi.mock('@store', () => ({
   useStore: vi.fn(),
 }));
 
-vi.mock('../../components/Cities', () => ({
+vi.mock('@components/Cities', () => ({
   default: ({ data }: { data: ITransformedWeatherRealTimeDetails[] }) => (
     <div data-testid="cities">{data.map((d) => d.name).join(',')}</div>
   ),
 }));
 
-vi.mock('../../components/SearchBar', () => ({
+vi.mock('@components/SearchBar', () => ({
   default: ({
     value,
     onChange,
@@ -33,7 +33,7 @@ vi.mock('../../components/SearchBar', () => ({
   }) => <input data-testid="searchbar" value={value} onChange={onChange} />,
 }));
 
-vi.mock('../../components/LoadMorePagination', () => ({
+vi.mock('@components/LoadMorePagination', () => ({
   default: ({
     totalCount,
     children,
@@ -47,7 +47,7 @@ vi.mock('./HomePageSkeleton', () => ({
   HomePageSkeleton: () => <div data-testid="skeleton">Loading...</div>,
 }));
 
-const mockedUseWeatherRealTime = vi.mocked(useWeatherRealTime);
+const mockedUseWeatherRealTime = vi.mocked(useWeatherRealTime, true);
 const mockedUseStore = vi.mocked(useStore);
 
 function makeWeather(city: string): ITransformedWeatherRealTimeDetails {

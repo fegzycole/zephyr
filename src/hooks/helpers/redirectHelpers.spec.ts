@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { faker } from '@faker-js/faker';
 import { redirectIfNeeded } from './redirectHelpers';
-import { ITransformedWeatherRealTimeDetails } from '../../api/weather/types';
+import { ITransformedWeatherRealTimeDetails } from '@api/data-hooks/weather/types';
 
 function makeWeatherDetails(
   overrides?: Partial<ITransformedWeatherRealTimeDetails>

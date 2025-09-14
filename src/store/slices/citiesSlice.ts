@@ -1,6 +1,6 @@
 import { StateCreator } from 'zustand';
 import { CitiesSlice } from '../types';
-import { setCache, getCache } from '../../utils/storage';
+import { setCache, getCache } from '@utils/storage';
 import { CITIES_KEY } from '../keys';
 
 const DEFAULT_CITIES = [

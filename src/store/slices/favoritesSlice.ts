@@ -1,6 +1,6 @@
 import { StateCreator } from 'zustand';
 import { FavoritesSlice } from '../types';
-import { setCache, getCache } from '../../utils/storage';
+import { setCache, getCache } from '@utils/storage';
 import { FAVORITES_KEY } from '../keys';
 
 export const createFavoritesSlice: StateCreator<FavoritesSlice> = (set) => ({

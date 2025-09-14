@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
-import logo from '../../assets/weather.png';
+import logo from '@assets/weather.png';
 import { CloudyIcon, List } from 'lucide-react';
 import { SVGProps } from 'react';
 

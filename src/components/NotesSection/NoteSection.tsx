@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useStore } from '../../store/store';
+import { useStore } from '@store/store';
 import NoteBox from './NoteBox';
 import EditableNote from './EditableNote';
-import { Note } from '../../store/types';
-import LoadMorePagination from '../LoadMorePagination';
+import { Note } from '@store/types';
+import LoadMorePagination from '@components/LoadMorePagination';
 
-interface INoteSection {
+export interface INoteSection {
   city: string;
 }
 

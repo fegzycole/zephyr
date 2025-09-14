@@ -1,4 +1,4 @@
-interface IWeatherDetailCard {
+export interface IWeatherDetailCard {
   label: string;
   value: string;
   icon: string;

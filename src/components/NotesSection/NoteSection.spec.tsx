@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { beforeEach, afterEach, describe, it, expect, vi } from 'vitest';
 import NoteSection from './NoteSection';
-import { useStore } from '../../store/store';
+import { useStore } from '@store/store';
 
 type NoteItem = { id: string; content: string };
 type MinimalStore = {

@@ -1,6 +1,6 @@
 import { StarIcon } from 'lucide-react';
-import IconButton from '../IconButton';
-import { useStore } from '../../store';
+import IconButton from '@components/IconButton';
+import { useStore } from '@store';
 import { useShallow } from 'zustand/react/shallow';
 
 interface IWeatherHero {

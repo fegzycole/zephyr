@@ -1,4 +1,4 @@
-import { useStore } from '../../store';
+import { useStore } from '@store';
 
 const toastTypeClasses: Record<string, string> = {
   error: 'bg-red-300',

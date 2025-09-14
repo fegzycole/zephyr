@@ -4,9 +4,9 @@ import { faker } from '@faker-js/faker';
 import { createNotesSlice } from './notesSlice';
 import { NotesSlice, Note, NotesByCity } from '../types';
 import { NOTES_KEY } from '../keys';
-import { getCache, setCache } from '../../utils/storage';
+import { getCache, setCache } from '@utils/storage';
 
-vi.mock('../../utils/storage', () => ({
+vi.mock('@utils/storage', () => ({
   getCache: vi.fn(),
   setCache: vi.fn(),
 }));
