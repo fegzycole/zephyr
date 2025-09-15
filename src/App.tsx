@@ -10,11 +10,12 @@ import WeatherPage from '@pages/WeatherPage';
 import { useUserLocation } from '@hooks/useUserLocation';
 
 function App() {
-  const { loadCities, loadFavorites, loadNotes } = useStore(
+  const { loadCities, loadFavorites, loadNotes, cleanExpiredToasts } = useStore(
     useShallow((s) => ({
       loadCities: s.loadCities,
       loadFavorites: s.loadFavorites,
       loadNotes: s.loadNotes,
+      cleanExpiredToasts: s.cleanExpiredToasts,
     }))
   );
 
@@ -22,7 +23,8 @@ function App() {
     loadCities();
     loadFavorites();
     loadNotes();
-  }, [loadCities, loadFavorites, loadNotes]);
+    cleanExpiredToasts();
+  }, [cleanExpiredToasts, loadCities, loadFavorites, loadNotes]);
 
   useUserLocation();
 

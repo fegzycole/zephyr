@@ -37,7 +37,7 @@ A modern, production-ready React application for looking up current weather info
 
 ### Notes Management
 
-![Notes Management](./docs/comments.png)
+![Notes Management](./docs/notes.png)
 
 <div class="page-break"></div>
 
@@ -133,8 +133,7 @@ zephyr/
 │   │   └── constants.ts
 │   └── types/
 ├── docs/                        # Documentation assets
-├── public/                      # Static assets
-└── tests/                       # Test configurations
+└── public/                      # Static assets
 ```
 
 <div class="page-break"></div>

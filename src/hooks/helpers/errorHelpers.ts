@@ -1,4 +1,3 @@
-import { getCache, setCache } from '@utils/storage';
 import { LocationError } from '../types';
 
 export function mapGeolocationError(
@@ -15,15 +14,6 @@ export async function showErrorToast(
   switch (error) {
     case 'UNSUPPORTED': {
       addToast('Geolocation not supported in this browser.', 'error');
-      break;
-    }
-    case 'PERMISSION_DENIED': {
-      const cache: string | null = await getCache<string>('geoErrorShown');
-
-      if (!cache) {
-        addToast('Location permission denied.', 'info');
-        await setCache('geoErrorShown', 'true');
-      }
       break;
     }
     case 'UNAVAILABLE': {

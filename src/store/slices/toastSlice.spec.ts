@@ -98,4 +98,55 @@ describe('createToastSlice', () => {
     const [toast1, toast2] = store.getState().toasts;
     expect(toast1.id).not.toBe(toast2.id);
   });
+
+  it('cleans expired toasts', () => {
+    const msg1 = 'Old toast';
+    const msg2 = 'Recent toast';
+
+    vi.setSystemTime(new Date('2023-01-01T10:00:00Z'));
+    store.getState().addToast(msg1);
+
+    vi.setSystemTime(new Date('2023-01-01T10:05:00Z'));
+    store.getState().addToast(msg2);
+
+    expect(store.getState().toasts).toHaveLength(2);
+
+    store.getState().cleanExpiredToasts();
+
+    const remainingToasts = store.getState().toasts;
+    expect(remainingToasts).toHaveLength(1);
+    expect(remainingToasts[0].message).toBe(msg2);
+  });
+
+  it('keeps all toasts when none are expired', () => {
+    const msg1 = 'Fresh toast 1';
+    const msg2 = 'Fresh toast 2';
+
+    vi.setSystemTime(new Date('2023-01-01T10:00:00Z'));
+    store.getState().addToast(msg1);
+    store.getState().addToast(msg2);
+
+    expect(store.getState().toasts).toHaveLength(2);
+
+    store.getState().cleanExpiredToasts();
+
+    expect(store.getState().toasts).toHaveLength(2);
+  });
+
+  it('removes all toasts when all are expired', () => {
+    const msg1 = 'Old toast 1';
+    const msg2 = 'Old toast 2';
+
+    vi.setSystemTime(new Date('2023-01-01T10:00:00Z'));
+    store.getState().addToast(msg1);
+    store.getState().addToast(msg2);
+
+    vi.setSystemTime(new Date('2023-01-01T10:10:00Z'));
+
+    expect(store.getState().toasts).toHaveLength(2);
+
+    store.getState().cleanExpiredToasts();
+
+    expect(store.getState().toasts).toHaveLength(0);
+  });
 });

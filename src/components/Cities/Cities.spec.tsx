@@ -86,6 +86,7 @@ describe('Cities component', () => {
       toasts: [],
       addToast: vi.fn(),
       removeToast: vi.fn(),
+      cleanExpiredToasts: vi.fn(),
     };
   });
 

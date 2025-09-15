@@ -32,11 +32,16 @@ export interface CitiesSlice {
 export interface Toast {
   id: string;
   message: string;
-  type?: 'error' | 'info' | 'warn';
+  type: 'error' | 'info' | 'warn' | 'success';
+  timestamp: number;
 }
 
 export interface ToastSlice {
   toasts: Toast[];
-  addToast: (message: string, type?: 'error' | 'info' | 'warn') => void;
+  addToast: (
+    message: string,
+    type?: 'error' | 'info' | 'warn' | 'success'
+  ) => () => void;
   removeToast: (id: string) => void;
+  cleanExpiredToasts: () => void;
 }

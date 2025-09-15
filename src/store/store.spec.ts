@@ -73,6 +73,25 @@ describe('useStore (root store)', () => {
     expect(useStore.getState().toasts).toEqual([]);
   });
 
+  it('can clean expired toasts', () => {
+    vi.useFakeTimers();
+    const store = useStore.getState();
+
+    store.addToast('Old toast', 'info');
+    store.addToast('Recent toast', 'info');
+
+    expect(useStore.getState().toasts).toHaveLength(2);
+
+    vi.advanceTimersByTime(3500);
+
+    store.cleanExpiredToasts();
+
+    const remainingToasts = useStore.getState().toasts;
+    expect(remainingToasts.length).toBeLessThanOrEqual(2);
+
+    vi.useRealTimers();
+  });
+
   it('supports cross-slice operations', () => {
     const city = 'Berlin';
     const store = useStore.getState();

@@ -32,12 +32,14 @@ interface MockStore {
   loadCities: () => void;
   loadFavorites: () => void;
   loadNotes: () => void;
+  cleanExpiredToasts: () => void;
 }
 
 let mockStoreState: MockStore = {
   loadCities: () => undefined,
   loadFavorites: () => undefined,
   loadNotes: () => undefined,
+  cleanExpiredToasts: () => undefined,
 };
 
 vi.mock('./store', () => ({
@@ -48,6 +50,7 @@ describe('<App />', () => {
   const mockLoadCities = vi.fn();
   const mockLoadFavorites = vi.fn();
   const mockLoadNotes = vi.fn();
+  const mockCleanExpiredToasts = vi.fn();
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -56,6 +59,7 @@ describe('<App />', () => {
       loadCities: mockLoadCities,
       loadFavorites: mockLoadFavorites,
       loadNotes: mockLoadNotes,
+      cleanExpiredToasts: mockCleanExpiredToasts,
     };
   });
 
@@ -90,7 +94,7 @@ describe('<App />', () => {
     expect(screen.getByTestId('weather-page')).toBeInTheDocument();
   });
 
-  it('calls loadCities, loadFavorites and loadNotes on mount', () => {
+  it('calls loadCities, loadFavorites, loadNotes and cleanExpiredToasts on mount', () => {
     render(
       <MemoryRouter>
         <App />
@@ -100,6 +104,7 @@ describe('<App />', () => {
     expect(mockLoadCities).toHaveBeenCalledTimes(1);
     expect(mockLoadFavorites).toHaveBeenCalledTimes(1);
     expect(mockLoadNotes).toHaveBeenCalledTimes(1);
+    expect(mockCleanExpiredToasts).toHaveBeenCalledTimes(1);
   });
 
   it('calls useUserLocation hook', () => {
