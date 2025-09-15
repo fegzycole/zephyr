@@ -10,9 +10,10 @@ interface IWeatherHero {
 }
 
 export default function WeatherHero({ city, temperature, icon }: IWeatherHero) {
-  const { favorites, addFavorite, removeFavorite } = useStore(
+  const { favorites, addCity, addFavorite, removeFavorite } = useStore(
     useShallow((s) => ({
       favorites: s.favorites,
+      addCity: s.addCity,
       addFavorite: s.addFavorite,
       removeFavorite: s.removeFavorite,
     }))
@@ -25,9 +26,9 @@ export default function WeatherHero({ city, temperature, icon }: IWeatherHero) {
       removeFavorite(city);
     } else {
       addFavorite(city);
+      addCity(city);
     }
   };
-
   const isFavorite = favorites.includes(city);
 
   return (

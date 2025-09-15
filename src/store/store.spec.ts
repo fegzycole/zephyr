@@ -48,9 +48,12 @@ describe('useStore (root store)', () => {
     expect(useStore.getState().notes[city]).toEqual([]);
   });
 
-  it('can remove cities', () => {
-    const city = 'Tokyo'
-    const store = useStore.getState();;
+  it('can add and remove cities', () => {
+    const city = 'Tokyo';
+    const store = useStore.getState();
+
+    store.addCity(city);
+    expect(useStore.getState().cities).toContain(city);
 
     store.removeCity(city);
     expect(useStore.getState().cities).not.toContain(city);
@@ -74,6 +77,7 @@ describe('useStore (root store)', () => {
     const city = 'Berlin';
     const store = useStore.getState();
 
+    store.addCity(city);
     store.addFavorite(city);
 
     const content = 'Cross-slice test note';
@@ -83,6 +87,7 @@ describe('useStore (root store)', () => {
 
     const state = useStore.getState();
 
+    expect(state.cities).toContain(city);
     expect(state.favorites).toContain(city);
     expect(state.notes[city][0].content).toBe(content);
     expect(state.toasts.some((t) => t.message.includes(city))).toBe(true);

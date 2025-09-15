@@ -5,16 +5,19 @@ import { useStore } from '@store';
 import WeatherHero from './WeatherHero';
 
 describe('WeatherHero', () => {
+  let addCity: ReturnType<typeof vi.fn>;
   let addFavorite: ReturnType<typeof vi.fn>;
   let removeFavorite: ReturnType<typeof vi.fn>;
 
   beforeEach(() => {
     vi.clearAllMocks();
+    addCity = vi.fn();
     addFavorite = vi.fn();
     removeFavorite = vi.fn();
 
     useStore.setState({
       favorites: [],
+      addCity,
       addFavorite,
       removeFavorite,
     });

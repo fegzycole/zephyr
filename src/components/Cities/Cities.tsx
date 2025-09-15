@@ -8,16 +8,23 @@ interface ICities {
 }
 
 export default function Cities({ data }: ICities) {
-  const { removeCity, addFavorite, removeFavorite, favorites, cities } =
-    useStore(
-      useShallow((s) => ({
-        cities: s.cities,
-        removeCity: s.removeCity,
-        addFavorite: s.addFavorite,
-        removeFavorite: s.removeFavorite,
-        favorites: s.favorites,
-      }))
-    );
+  const {
+    addCity,
+    removeCity,
+    addFavorite,
+    removeFavorite,
+    favorites,
+    cities,
+  } = useStore(
+    useShallow((s) => ({
+      cities: s.cities,
+      addCity: s.addCity,
+      removeCity: s.removeCity,
+      addFavorite: s.addFavorite,
+      removeFavorite: s.removeFavorite,
+      favorites: s.favorites,
+    }))
+  );
 
   const handleFavoriteToggle = (city: string) => {
     const isFavorite = favorites.includes(city);
@@ -26,11 +33,13 @@ export default function Cities({ data }: ICities) {
       removeFavorite(city);
     } else {
       addFavorite(city);
+      addCity(city);
     }
   };
 
   const handleRemoveCity = (city: string) => {
     removeCity(city);
+    removeFavorite(city);
   };
 
   return (

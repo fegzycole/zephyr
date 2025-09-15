@@ -11,10 +11,7 @@ import type {
 } from '@store/types';
 import type { ITransformedWeatherRealTimeDetails } from '@api/data-hooks/weather/types';
 
-type Store = FavoritesSlice &
-  NotesSlice &
-  CitiesSliceType &
-  ToastSlice;
+type Store = FavoritesSlice & NotesSlice & CitiesSliceType & ToastSlice;
 
 vi.mock('../WeatherCard', () => ({
   WeatherCard: vi.fn(
@@ -82,6 +79,7 @@ describe('Cities component', () => {
       loadNotes: vi.fn(),
 
       cities: [],
+      addCity: vi.fn(),
       removeCity: vi.fn(),
       loadCities: vi.fn(),
 
@@ -150,6 +148,7 @@ describe('Cities component', () => {
     fireEvent.click(screen.getByText('toggle-fav'));
 
     expect(mockState.addFavorite).toHaveBeenCalledWith(city.name);
+    expect(mockState.addCity).toHaveBeenCalledWith(city.name);
   });
 
   it('calls removeFavorite when toggling an existing favorite', () => {
@@ -170,5 +169,6 @@ describe('Cities component', () => {
     fireEvent.click(screen.getByText('remove'));
 
     expect(mockState.removeCity).toHaveBeenCalledWith(city.name);
+    expect(mockState.removeFavorite).toHaveBeenCalledWith(city.name);
   });
 });

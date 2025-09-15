@@ -52,12 +52,33 @@ describe('createCitiesSlice', () => {
     expect(mockedSetCache).not.toHaveBeenCalled();
   });
 
+  it('adds a new city and updates cache', async () => {
+    const existingCity = 'Dublin';
+    const newCity = 'Prague';
+    store.setState({ cities: [existingCity] });
+
+    store.getState().addCity(newCity);
+
+    expect(store.getState().cities).toEqual([existingCity, newCity].sort());
+    expect(mockedSetCache).toHaveBeenCalledWith(CITIES_KEY, [existingCity, newCity].sort());
+  });
+
+  it('does not add duplicate cities', async () => {
+    const city = 'Dublin';
+    store.setState({ cities: [city] });
+
+    store.getState().addCity(city);
+
+    expect(store.getState().cities).toEqual([city]);
+    expect(mockedSetCache).toHaveBeenCalledWith(CITIES_KEY, [city]);
+  });
+
   it('removes a city and updates cache', async () => {
     const city1 = 'Dublin';
     const city2 = 'Prague';
     store.setState({ cities: [city1, city2] });
 
-    await store.getState().removeCity(city1);
+    store.getState().removeCity(city1);
 
     expect(store.getState().cities).toEqual([city2]);
     expect(mockedSetCache).toHaveBeenCalledWith(CITIES_KEY, [city2]);

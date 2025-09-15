@@ -24,6 +24,7 @@ export interface NotesSlice {
 
 export interface CitiesSlice {
   cities: string[];
+  addCity: (city: string) => void;
   removeCity: (city: string) => void;
   loadCities: () => Promise<void>;
 }
