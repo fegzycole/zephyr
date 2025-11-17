@@ -466,11 +466,6 @@ VITE_API_BASE_URL=http://api.weatherstack.com
 
 <div class="page-break"></div>
 
-## 📄 License
-
-This project is built as a technical assessment for Elite Software Automation and is not intended for commercial use.
-
-**Assignment Version: SDEB-2025-02-i**
 **Built with ❤️ using React, TypeScript, and modern web technologies**
 
 ---
